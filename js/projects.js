@@ -68,7 +68,7 @@ const projects = [
     caseStudy: {
       problem:
         "Lack of transparency and traceability in the cinnamon supply chain reduces trust in export quality.",
-      role: "Blockchain System Architect & Flutter Developer",
+      role: "UI/UX Designer",
       challenges: [
         "Mapping real-world supply chain to digital records",
         "Ensuring stakeholder usability with minimal tech literacy",
@@ -84,7 +84,7 @@ const projects = [
         "Stakeholder-centric design principles",
         "Data consistency across multiple actors",
       ],
-      images: ["cinnamon-flow.jpg", "qr-scan.jpg", "trace-dashboard.jpg"],
+      images: ["cinnamon-flow.jpg", "qr-scan.jpg", "mobile-dashboard.jpg"],
     },
   },
   {
@@ -96,7 +96,7 @@ const projects = [
     caseStudy: {
       problem:
         "Medical records systems are vulnerable to breaches, lack interoperability, and face regulatory issues.",
-      role: "Lead Researcher & Blockchain Analyst",
+      role: "Team Lead & Blockchain Analyst",
       challenges: [
         "Evaluating compliance with GDPR/HIPAA",
         "Analyzing scalability under patient load",
@@ -145,7 +145,7 @@ const projects = [
         "User experience design for service apps",
         "Database schema design for real-world operations",
       ],
-      images: ["repair-home.jpg", "booking-form.jpg", "admin-panel.jpg"],
+      images: ["repair-home.jpg", "service-form.jpg", "admin-panel.jpg"],
     },
   },
   {
@@ -202,7 +202,7 @@ const projects = [
         "Building maintainable console-based tools",
         "Error handling without databases",
       ],
-      images: ["cli-ui.jpg", "book-entry.jpg", "return-menu.jpg"],
+      images: ["cli-ui.jpg", "Menu.jpg", "book-menu.jpg"],
     },
   },
   {
@@ -231,7 +231,7 @@ const projects = [
         "Accessibility for underserved communities",
         "Frontend/backend separation for low-bandwidth use",
       ],
-      images: ["farm-landing.jpg", "product-list.jpg", "buyer-dashboard.jpg"],
+      images: ["farm-landing.jpg", "product-list.jpg", "seller-dashboard.jpg"],
     },
   },
   {
@@ -259,7 +259,7 @@ const projects = [
         "Optimizing for public university audiences",
         "Cross-device UI testing",
       ],
-      images: ["extru-home.jpg", "schedule.jpg", "project-gallery.jpg"],
+      images: ["extru-home.jpg", "schedule.jpg", "gallery.jpg"],
     },
   },
 ];
@@ -405,6 +405,11 @@ function initializeSkillsAndProjects() {
     const closeBtn = document.getElementById("close-modal");
     const content = document.getElementById("case-study-content");
 
+    // Create zoom overlay
+    const zoomOverlay = document.createElement('div');
+    zoomOverlay.className = 'zoomed-image-overlay';
+    document.body.appendChild(zoomOverlay);
+
     function showCaseStudy(projectTitle) {
       const project = projects.find((p) => p.title === projectTitle);
       if (!project || !project.caseStudy) return;
@@ -434,7 +439,8 @@ function initializeSkillsAndProjects() {
         .map(
           (img) => `
                 <img src="assets/images/${img}" alt="Project screenshot" 
-                     class="rounded-lg shadow-md hover:scale-105 transition-transform cursor-zoom-in">
+                     class="rounded-lg shadow-md hover:scale-105 transition-transform cursor-zoom-in w-full h-48 object-cover"
+                     onclick="handleImageZoom(this)">
             `
         )
         .join("");
@@ -446,6 +452,29 @@ function initializeSkillsAndProjects() {
         duration: 0.5,
         ease: "power3.out",
       });
+    }
+
+    // Handle image zoom
+    window.handleImageZoom = function(img) {
+      const zoomedImg = document.createElement('img');
+      zoomedImg.src = img.src;
+      zoomedImg.alt = img.alt;
+      
+      zoomOverlay.innerHTML = '';
+      zoomOverlay.appendChild(zoomedImg);
+      zoomOverlay.classList.add('active');
+      
+      // Close on click
+      zoomOverlay.onclick = function() {
+          zoomOverlay.classList.remove('active');
+      };
+
+      // Close on escape key
+      document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+              zoomOverlay.classList.remove('active');
+          }
+      }, { once: true });
     }
 
     document.addEventListener("click", (e) => {

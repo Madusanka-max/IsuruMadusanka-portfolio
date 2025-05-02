@@ -1,51 +1,63 @@
 // Dark mode functionality
 function initializeDarkMode() {
-    const themeToggle = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
     
     // Check for saved user preference, first in localStorage, then system setting
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    // On page load, check if should be dark mode
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-        htmlElement.classList.add('dark');
-        updateThemeColor(true);
+    // Initial theme setup
+    function setInitialTheme() {
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
     }
+
+    // Apply initial theme
+    setInitialTheme();
+
+    // Toggle theme function
+    function toggleTheme() {
+        htmlElement.classList.toggle('dark');
+        const isDark = htmlElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+        // Animate icons
+        const icon = isDark ? 
+            themeToggle.querySelector('.fa-moon') : 
+            themeToggle.querySelector('.fa-sun');
+
+        gsap.fromTo(icon, 
+            { rotation: -30, scale: 0.5, opacity: 0 },
+            { rotation: 0, scale: 1, opacity: 1, duration: 0.3 }
+        );
+    }
+
+    // Event listeners
+    themeToggle.addEventListener('click', toggleTheme);
 
     // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         if (!localStorage.getItem('theme')) {
             if (e.matches) {
                 htmlElement.classList.add('dark');
-                updateThemeColor(true);
             } else {
                 htmlElement.classList.remove('dark');
-                updateThemeColor(false);
             }
         }
     });
-
-    // Toggle theme
-    themeToggle.addEventListener('click', () => {
-        htmlElement.classList.toggle('dark');
-        const isDark = htmlElement.classList.contains('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        updateThemeColor(isDark);
-
-        // Animate icon
-        const icon = isDark ? themeToggle.querySelector('.fa-moon') : themeToggle.querySelector('.fa-sun');
-        gsap.fromTo(icon, 
-            { rotation: -30, scale: 0.5, opacity: 0 },
-            { rotation: 0, scale: 1, opacity: 1, duration: 0.3 }
-        );
-    });
 }
+
+// Initialize dark mode on page load
+document.addEventListener('DOMContentLoaded', initializeDarkMode);
 
 // Update theme-color meta tag
 function updateThemeColor(isDark) {
-    const lightColor = '#ffffff';
-    const darkColor = '#1f2937';
+    const lightColor = '#f9fafb';  // matches theme background color
+    const darkColor = '#0f172a';   // matches theme darkBackground color
     document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]').content = lightColor;
     document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]').content = darkColor;
 }
@@ -282,6 +294,7 @@ function setupContactForm() {
         const message = document.getElementById('message');
         let isValid = true;
 
+        // Validate inputs
         if (!name.value.trim()) {
             showError('name', true);
             isValid = false;
@@ -305,21 +318,24 @@ function setupContactForm() {
 
         if (!isValid) return;
 
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        
         try {
             submitStatus.textContent = 'Sending...';
-            submitStatus.classList.remove('hidden', 'text-red-500');
+            submitStatus.classList.remove('hidden', 'text-red-500', 'text-green-500');
             submitStatus.classList.add('text-blue-500');
 
-            // Replace with your EmailJS configuration
+            const templateParams = {
+                from_name: name.value.trim(),
+                reply_to: email.value.trim(),
+                message: message.value.trim()
+            };
+
             await emailjs.send(
-                "YOUR_SERVICE_ID",
-                "YOUR_TEMPLATE_ID",
-                {
-                    to_email: "isuru.rodrigo1243@gmail.com",
-                    from_name: name.value,
-                    from_email: email.value,
-                    message: message.value,
-                }
+                "service_zr76d69",  // EmailJS service ID
+                "template_mgmu4kr", // EmailJS template ID
+                templateParams
             );
 
             submitStatus.textContent = 'Message sent successfully!';
@@ -336,9 +352,12 @@ function setupContactForm() {
             submitStatus.textContent = 'Failed to send message. Please try again.';
             submitStatus.classList.remove('text-blue-500');
             submitStatus.classList.add('text-red-500');
+        } finally {
+            submitButton.disabled = false;
         }
     });
 
+    // Clear errors on input
     ['name', 'email', 'message'].forEach(id => {
         document.getElementById(id).addEventListener('input', () => {
             showError(id, false);
@@ -379,7 +398,76 @@ function initializeAnimations() {
         ease: 'power1.inOut'
     });
 
-    // Scroll trigger animations
+    // About section enhanced animations
+    const aboutTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: '#about',
+            start: 'top 60%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    aboutTimeline
+        .from('.about-title', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+        })
+        .from('.about-animation', {
+            scale: 0.8,
+            opacity: 0,
+            duration: 1,
+            ease: 'elastic.out(1, 0.8)'
+        }, '-=0.4')
+        .from('#about .prose', {
+            y: 20,
+            opacity: 0,
+            duration: 0.6
+        }, '-=0.2')
+        .from('#about .space-y-4', {
+            x: -30,
+            opacity: 0,
+            duration: 0.6
+        }, '-=0.3')
+        .from('#about .bg-white\\/50', {
+            y: 20,
+            opacity: 0,
+            duration: 0.6
+        }, '-=0.2')
+        .from('#about .grid > div', {
+            scale: 0.8,
+            opacity: 0,
+            duration: 0.4,
+            stagger: 0.1
+        }, '-=0.3')
+        .from('#about .pt-4', {
+            y: 20,
+            opacity: 0,
+            duration: 0.4
+        }, '-=0.2');
+
+    // Fun facts hover animations
+    const funFacts = document.querySelectorAll('#about .grid > div');
+    funFacts.forEach(fact => {
+        fact.addEventListener('mouseenter', () => {
+            gsap.to(fact, {
+                scale: 1.05,
+                duration: 0.2,
+                ease: 'power2.out'
+            });
+        });
+
+        fact.addEventListener('mouseleave', () => {
+            gsap.to(fact, {
+                scale: 1,
+                duration: 0.2,
+                ease: 'power2.in'
+            });
+        });
+    });
+
+    // About section animations
     gsap.from('.about-title', {
         scrollTrigger: {
             trigger: '.about-title',
@@ -400,6 +488,80 @@ function initializeAnimations() {
         x: -50,
         opacity: 0,
         duration: 0.8
+    });
+
+    // Education section animations
+    gsap.from('#education h2', {
+        scrollTrigger: {
+            trigger: '#education',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8
+    });
+
+    // Animate education cards with stagger effect
+    gsap.from('.education-card', {
+        scrollTrigger: {
+            trigger: '#education',
+            start: 'top 60%',
+            toggleActions: 'play none none reverse'
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out'
+    });
+
+    // Add hover animations for education cards
+    const educationCards = document.querySelectorAll('.education-card');
+    educationCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            gsap.to(card, {
+                y: -10,
+                scale: 1.02,
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                duration: 0.3
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+                y: 0,
+                scale: 1,
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                duration: 0.3
+            });
+        });
+    });
+
+    // Awards section animations
+    gsap.from('#awards h2', {
+        scrollTrigger: {
+            trigger: '#awards',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out'
+    });
+
+    // Awards timeline entries animation
+    gsap.from('.award-item', {
+        scrollTrigger: {
+            trigger: '.awards-timeline',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2
     });
 }
 
@@ -439,41 +601,42 @@ function initializeAwardsTimeline() {
     const awards = [
         {
             year: "2025",
-            title: "🏆 Champion – Inter Faculty Volleyball",
+            title: "Champion – Inter Faculty Volleyball",
             description: "Led the ICT Faculty team to victory in the university-wide tournament.",
-            icon: "fa-trophy",
+            icon: "fa-volleyball-ball",
             iconColor: "text-yellow-500"
         },
         {
             year: "2024",
-            title: "🥈 1st Runners-Up – Football (Freshers' Meet)",
+            title: "1st Runners-Up – Football (Freshers' Meet)",
             description: "Contributed to team strategy and defense in the inter-departmental tournament.",
-            icon: "fa-football-ball",
+            icon: "fa-soccer-ball",
             iconColor: "text-gray-400"
         },
         {
+            year: "2024",
+            title: "DevRel Lead – FOSS Community RUSL",
+            description: "Organized tech talks, guided juniors on GitHub, promoted open source culture.",
+            icon: "fa-users",
+            iconColor: "text-green-500"
+        },
+        {
             year: "2023",
-            title: "🥉 Chess Tournament – 2nd Runners-Up",
+            title: "Chess Tournament – 2nd Runners-Up",
             description: "Qualified for finals and secured team bronze at the university chess championship.",
             icon: "fa-chess",
             iconColor: "text-yellow-700"
         },
-        {
-            year: "2024",
-            title: "🌱 DevRel Lead – FOSS Community RUSL",
-            description: "Organized tech talks, guided juniors on GitHub, promoted open source culture.",
-            icon: "fa-users",
-            iconColor: "text-green-500"
-        }
     ];
 
     // Create timeline entries
     const timelineContainer = document.querySelector('.awards-timeline');
+    if (!timelineContainer) return; // Guard clause
     
     // Clear existing entries
     timelineContainer.innerHTML = '';
 
-    // Add timeline entries
+    // Add timeline entries immediately without animation delay
     awards.forEach((award, index) => {
         const isEven = index % 2 === 0;
         const entry = document.createElement('article');
@@ -483,8 +646,7 @@ function initializeAwardsTimeline() {
                 <div class="w-4 h-4 bg-blue-500 rounded-full mx-auto ring-4 ring-white dark:ring-gray-900 pulse"></div>
                 <time class="block text-sm text-gray-500 dark:text-gray-400 mt-2">${award.year}</time>
             </div>
-            <div class="flex-grow ${isEven ? 'md:ml-6' : 'md:mr-6'} bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 
-                       transform transition-all duration-700 opacity-0 ${isEven ? 'translate-x-12' : '-translate-x-12'}">
+            <div class="flex-grow ${isEven ? 'md:ml-6' : 'md:mr-6'} bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
                 <div class="flex items-center gap-2 mb-2">
                     <i class="fas ${award.icon} ${award.iconColor} text-xl"></i>
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">${award.title}</h3>
@@ -494,34 +656,87 @@ function initializeAwardsTimeline() {
         `;
         timelineContainer.appendChild(entry);
     });
+}
 
-    // Initialize GSAP ScrollTrigger for animations
-    gsap.registerPlugin(ScrollTrigger);
+// Call initializeAwardsTimeline immediately after DOM is ready
+document.addEventListener('DOMContentLoaded', initializeAwardsTimeline);
 
-    // Animate timeline entries
-    const timelineEntries = document.querySelectorAll('.award-item > div:last-child');
-    timelineEntries.forEach((entry) => {
-        gsap.to(entry, {
-            scrollTrigger: {
-                trigger: entry,
-                start: "top 80%",
-                toggleActions: "play none none reverse"
-            },
-            opacity: 1,
-            x: 0,
-            duration: 0.8,
-            ease: "power3.out"
+// Re-initialize on any theme changes
+document.addEventListener('themeChanged', initializeAwardsTimeline);
+
+// Terminal typing animation
+async function initializeTerminal() {
+    const terminalLines = [
+        { prompt: '> whoami', output: '👨‍💻 Isuru Madusanka Rodrigo' },
+        { prompt: '> passion', output: '🌐 Web Development, Open Source, Blockchain, IoT' },
+        { prompt: '> mission', output: '🚀 Build secure, scalable tech that matters.' }
+    ];
+    
+    const terminal = document.getElementById('terminal-text');
+    const typeDelay = 50; // Delay between each character
+    const lineDelay = 500; // Delay between lines
+    const loopDelay = 3000; // Delay before starting the next loop
+
+    async function typeTerminal() {
+        // Clear previous content
+        terminal.innerHTML = '';
+        
+        for (const line of terminalLines) {
+            // Create and add prompt line
+            const promptDiv = document.createElement('div');
+            promptDiv.className = 'terminal-line';
+            promptDiv.innerHTML = `<span class="terminal-prompt">${line.prompt}</span>`;
+            terminal.appendChild(promptDiv);
+            
+            // Animate prompt appearing
+            await new Promise(resolve => setTimeout(resolve, 100));
+            promptDiv.classList.add('visible');
+            
+            await new Promise(resolve => setTimeout(resolve, lineDelay));
+            
+            // Create and add output line
+            const outputDiv = document.createElement('div');
+            outputDiv.className = 'terminal-line terminal-output';
+            terminal.appendChild(outputDiv);
+            
+            // Type out each character of the output
+            for (let i = 0; i < line.output.length; i++) {
+                outputDiv.textContent = line.output.slice(0, i + 1);
+                await new Promise(resolve => setTimeout(resolve, typeDelay));
+            }
+            
+            outputDiv.classList.add('visible');
+            await new Promise(resolve => setTimeout(resolve, lineDelay));
+        }
+
+        // Wait before starting the next loop
+        await new Promise(resolve => setTimeout(resolve, loopDelay));
+
+        // Fade out existing content
+        const lines = terminal.querySelectorAll('.terminal-line');
+        lines.forEach(line => {
+            line.style.transition = 'opacity 0.5s';
+            line.style.opacity = '0';
         });
-    });
+
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Start the loop again
+        typeTerminal();
+    }
+
+    // Start the initial loop
+    typeTerminal();
 }
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize EmailJS first
+    emailjs.init("BweEaqR992ldwGz_3");
+    
     initializeDarkMode();
+    initializeTerminal();
     initializeContactSection();
     initializeAnimations();
     initializeAwardsTimeline();
-    
-    // Initialize EmailJS
-    emailjs.init("YOUR_PUBLIC_KEY");
 });
