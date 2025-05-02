@@ -158,59 +158,14 @@
         </section>
 
         <!-- Awards & Recognition Timeline -->
-        <section id="awards" class="py-20 bg-gray-50 dark:bg-gray-900" aria-label="Awards and Recognition">
+        <section id="awards" class="py-20 bg-gray-50 dark:bg-gray-900" aria-label="Awards and Recognition Timeline">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Awards & Recognition</h2>
-                <div class="max-w-3xl mx-auto">
-                    <div class="space-y-8 relative awards-timeline">
-                        <!-- Timeline line -->
-                        <div class="absolute left-8 top-3 bottom-3 w-0.5 bg-blue-200 dark:bg-blue-900 timeline-line"></div>
-
-                        <!-- Award Items -->
-                        <div class="award-item flex group">
-                            <div class="flex-shrink-0 w-16 text-center z-10">
-                                <div class="w-4 h-4 bg-blue-500 rounded-full mx-auto ring-4 ring-white dark:ring-gray-900"></div>
-                                <span class="block text-sm text-gray-500 dark:text-gray-400 mt-2">2025</span>
-                            </div>
-                            <div class="flex-grow ml-6 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transform transition-all duration-300 translate-x-12 opacity-0">
-                                <div class="flex items-center gap-2 mb-2">
-                                    <i class="fas fa-trophy text-yellow-500 text-xl"></i>
-                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Champion – Inter Faculty Meet</h3>
-                                </div>
-                                <p class="text-gray-600 dark:text-gray-400">Led the Technology Faculty volleyball team to victory, demonstrating leadership and team coordination skills.</p>
-                                <span class="inline-block mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Volleyball</span>
-                            </div>
-                        </div>
-
-                        <div class="award-item flex group"></div>
-                            <div class="flex-shrink-0 w-16 text-center z-10">
-                                <div class="w-4 h-4 bg-blue-500 rounded-full mx-auto ring-4 ring-white dark:ring-gray-900"></div>
-                                <span class="block text-sm text-gray-500 dark:text-gray-400 mt-2">2024</span>
-                            </div>
-                            <div class="flex-grow ml-6 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transform transition-all duration-300 -translate-x-12 opacity-0">
-                                <div class="flex items-center gap-2 mb-2">
-                                    <i class="fas fa-medal text-gray-400 text-xl"></i>
-                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">1st Runners-Up – Freshers' Meet</h3>
-                                </div>
-                                <p class="text-gray-600 dark:text-gray-400">Showcased exceptional teamwork and sportsmanship in the university football tournament.</p>
-                                <span class="inline-block mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Football</span>
-                            </div>
-                        </div>
-
-                        <div class="award-item flex group">
-                            <div class="flex-shrink-0 w-16 text-center z-10">
-                                <div class="w-4 h-4 bg-blue-500 rounded-full mx-auto ring-4 ring-white dark:ring-gray-900"></div>
-                                <span class="block text-sm text-gray-500 dark:text-gray-400 mt-2">2024</span>
-                            </div>
-                            <div class="flex-grow ml-6 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transform transition-all duration-300 translate-x-12 opacity-0">
-                                <div class="flex items-center gap-2 mb-2">
-                                    <i class="fas fa-award text-yellow-700 text-xl"></i>
-                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">2nd Runners-Up – Chess Tournament</h3>
-                                </div>
-                                <p class="text-gray-600 dark:text-gray-400">Demonstrated strategic thinking and problem-solving abilities in competitive chess.</p>
-                                <span class="inline-block mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Chess</span>
-                            </div>
-                        </div>
+                <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">
+                    <span aria-hidden="true">🏆 </span>Awards & Recognition
+                </h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="space-y-8 relative awards-timeline" aria-label="Timeline of achievements">
+                        <!-- Timeline entries will be dynamically populated by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -302,108 +257,143 @@
         </div>
 
         <!-- Contact Section -->
-        <section id="contact" class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900" aria-label="Contact Information">
-            <div class="container mx-auto px-6 py-20">
-                <h2 class="text-3xl font-bold text-center mb-12 contact-title dark:text-white">Get In Touch</h2>
+        <section id="contact" class="min-h-screen py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900" aria-label="Contact Information">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-8 contact-title dark:text-white">
+                    Let's Connect <span class="text-blue-600 dark:text-blue-400">👋</span>
+                </h2>
                 
+                <!-- Availability Badge -->
+                <div class="text-center mb-8">
+                    <span id="availability-badge" class="inline-block"></span>
+                </div>
+
                 <!-- Job Cards -->
                 <div id="job-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12"></div>
-                
-                <div class="max-w-4xl mx-auto">
-                    <!-- Availability Badge -->
-                    <div class="text-center mb-8">
-                        <span id="availability-badge" class="inline-block"></span>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div class="contact-info">
-                            <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
-                                <h3 class="text-2xl font-semibold mb-6 dark:text-white">Contact Information</h3>
-                                <div class="space-y-4">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-envelope text-blue-600 text-xl w-8" aria-hidden="true"></i>
-                                        <a href="mailto:isuru.rodrigo1243@gmail.com" 
-                                           class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                                           aria-label="Email me">
-                                            isuru.rodrigo1243@gmail.com
-                                        </a>
+
+                <!-- Main Contact Container -->
+                <div class="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-[1.01] transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Left Column - Contact Info -->
+                        <div class="w-full md:w-2/5 bg-gradient-to-br from-blue-600 to-blue-700 p-8 text-white">
+                            <div class="h-full flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-8">Contact Information</h3>
+                                    <div class="space-y-6">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center flex-shrink-0">
+                                                <i class="fas fa-user text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm text-blue-200">Full Name</p>
+                                                <p class="font-medium">Isuru Madusanka Rodrigo</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center flex-shrink-0">
+                                                <i class="fas fa-envelope text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm text-blue-200">Email</p>
+                                                <a href="mailto:isuru.rodrigo1243@gmail.com" class="font-medium hover:text-blue-200 transition-colors">
+                                                    isuru.rodrigo1243@gmail.com
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center flex-shrink-0">
+                                                <i class="fas fa-phone text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm text-blue-200">Phone</p>
+                                                <a href="tel:+94714288427" class="font-medium hover:text-blue-200 transition-colors">
+                                                    +94 71 428 8427
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex items-start space-x-4">
+                                            <div class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center flex-shrink-0">
+                                                <i class="fas fa-map-marker-alt text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm text-blue-200">Location</p>
+                                                <p class="font-medium">Matale, Sri Lanka</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-phone text-blue-600 text-xl w-8" aria-hidden="true"></i>
-                                        <a href="tel:+94714288427" 
-                                           class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                                           aria-label="Call me">
-                                            +94 71 428 8427
-                                        </a>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-map-marker-alt text-blue-600 text-xl w-8"></i>
-                                        <span class="text-gray-600 dark:text-gray-300">Matale, Sri Lanka</span>
-                                    </div>
-                                    <div class="flex space-x-4 mt-6">
+                                </div>
+
+                                <!-- Social Links -->
+                                <div class="mt-8 space-y-4">
+                                    <p class="text-sm text-blue-200 mb-4">Connect with me</p>
+                                    <div class="flex space-x-4">
                                         <a href="https://github.com/Madusanka-max" target="_blank" rel="noopener noreferrer" 
-                                           class="text-gray-600 hover:text-gray-900" title="Visit GitHub Profile">
-                                            <i class="fab fa-github text-2xl" aria-hidden="true"></i>
-                                            <span class="sr-only">GitHub Profile</span>
+                                           class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center hover:bg-blue-500/50 transition-colors">
+                                            <i class="fab fa-github text-xl"></i>
                                         </a>
                                         <a href="https://www.linkedin.com/in/Isuru-Madusanka-Rodrigo" target="_blank" rel="noopener noreferrer" 
-                                           class="text-gray-600 hover:text-gray-900" title="Visit LinkedIn Profile">
-                                            <i class="fab fa-linkedin text-2xl" aria-hidden="true"></i>
-                                            <span class="sr-only">LinkedIn Profile</span>
+                                           class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center hover:bg-blue-500/50 transition-colors">
+                                            <i class="fab fa-linkedin-in text-xl"></i>
+                                        </a>
+                                        <a href="mailto:isuru.rodrigo1243@gmail.com" 
+                                           class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center hover:bg-blue-500/50 transition-colors">
+                                            <i class="fas fa-envelope text-xl"></i>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Lottie Animation -->
-                            <div class="mt-8 flex justify-center">
-                                <lottie-player
-                                    id="lottie-typing"
-                                    src="https://lottie.host/5ccbcc30-d54c-43f3-aadf-b3cd6e315393/2DsFN5vhGY.json"
-                                    background="transparent"
-                                    speed="1"
-                                    loop>
-                                </lottie-player>
-                            </div>
                         </div>
-                        
-                        <div class="contact-form">
-                            <form id="contactForm" class="space-y-6" novalidate>
-                                <div>
-                                    <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                                    <input type="text" 
-                                           id="name" 
-                                           name="name" 
-                                           required 
-                                           aria-required="true"
-                                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                    <p class="text-red-500 text-sm mt-1 hidden" id="nameError" role="alert">Please enter your name</p>
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                                    <input type="email" 
-                                           id="email" 
-                                           name="email" 
-                                           required 
-                                           aria-required="true"
-                                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                    <p class="text-red-500 text-sm mt-1 hidden" id="emailError" role="alert">Please enter a valid email address</p>
-                                </div>
-                                <div>
-                                    <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                                    <textarea id="message" 
-                                              name="message" 
-                                              required 
-                                              aria-required="true"
-                                              rows="4" 
-                                              class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
-                                    <p class="text-red-500 text-sm mt-1 hidden" id="messageError" role="alert">Please enter your message</p>
-                                </div>
-                                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
-                                    Send Message
-                                </button>
-                                <p id="submitStatus" class="text-center mt-4 hidden"></p>
-                            </form>
+
+                        <!-- Right Column - Contact Form -->
+                        <div class="w-full md:w-3/5 p-8">
+                            <div class="max-w-lg mx-auto">
+                                <h3 class="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Send me a message</h3>
+                                <form id="contactForm" class="space-y-6" novalidate>
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                                        <input type="text" 
+                                               id="name" 
+                                               name="name" 
+                                               required 
+                                               aria-required="true"
+                                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200 hover:border-blue-500">
+                                        <p class="text-red-500 text-sm mt-1 hidden" id="nameError" role="alert">Please enter your name</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                                        <input type="email" 
+                                               id="email" 
+                                               name="email" 
+                                               required 
+                                               aria-required="true"
+                                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200 hover:border-blue-500">
+                                        <p class="text-red-500 text-sm mt-1 hidden" id="emailError" role="alert">Please enter a valid email address</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                                        <textarea id="message" 
+                                                  name="message" 
+                                                  required 
+                                                  aria-required="true"
+                                                  rows="4" 
+                                                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200 hover:border-blue-500 resize-none"></textarea>
+                                        <p class="text-red-500 text-sm mt-1 hidden" id="messageError" role="alert">Please enter your message</p>
+                                    </div>
+                                    
+                                    <button type="submit" 
+                                            class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform transition-all duration-200 shadow-lg hover:shadow-xl">
+                                        Send Message
+                                        <i class="fas fa-paper-plane ml-2"></i>
+                                    </button>
+
+                                    <p id="submitStatus" class="text-center mt-4 hidden"></p>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

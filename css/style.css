@@ -89,6 +89,46 @@ input:focus, textarea:focus {
     transition: all 0.3s ease;
 }
 
+/* Contact form animations */
+#contactForm input:focus, 
+#contactForm textarea:focus {
+    transform-origin: center;
+    will-change: transform;
+}
+
+#contactForm input.typing, 
+#contactForm textarea.typing {
+    animation: gentle-shake 0.15s ease-in-out;
+}
+
+@keyframes gentle-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-1px); }
+    75% { transform: translateX(1px); }
+}
+
+/* Contact info icon animations */
+.contact-info .w-10 {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-info .flex:hover .w-10 {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Submit button paper plane animation */
+@keyframes fly {
+    0% { transform: translateX(0) rotate(0); }
+    20% { transform: translateX(4px) rotate(10deg); }
+    40% { transform: translateX(-2px) rotate(-5deg); }
+    60% { transform: translateX(4px) rotate(10deg); }
+    100% { transform: translateX(0) rotate(0); }
+}
+
+#contactForm button[type="submit"]:hover i {
+    animation: fly 1s ease infinite;
+}
+
 /* Hero section profile image glow */
 #profile-container::after {
     content: '';
@@ -211,4 +251,64 @@ input:focus, textarea:focus {
     transform-origin: center;
     transition: transform 0.3s ease;
     cursor: pointer;
+}
+
+/* Awards Timeline styles */
+.awards-timeline {
+    position: relative;
+}
+
+.awards-timeline::before {
+    content: '';
+    position: absolute;
+    left: 31px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgb(59 130 246 / 0.2);
+}
+
+@media (min-width: 768px) {
+    .awards-timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.award-item {
+    margin-bottom: 2rem;
+}
+
+.award-item .pulse {
+    animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+}
+
+.award-item:hover .pulse {
+    animation: none;
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+/* Dark mode adjustments for timeline */
+.dark .awards-timeline::before {
+    background: rgb(59 130 246 / 0.1);
+}
+
+.dark .award-item .pulse {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
 }
