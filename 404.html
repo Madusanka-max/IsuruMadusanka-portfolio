@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Isuru Madusanka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-6 text-center">
+        <div class="glitch-wrapper relative mb-8">
+            <h1 class="text-9xl font-bold text-gray-800 dark:text-white glitch" data-text="404">404</h1>
+        </div>
+        <h2 class="text-2xl md:text-4xl font-bold text-gray-700 dark:text-gray-300 mb-4">
+            Oops! You broke my portfolio! 😅
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+            Don't worry, even the best developers get lost sometimes.
+            <br class="hidden md:block">
+            Let's get you back to the right path!
+        </p>
+        <div class="space-y-4">
+            <a href="secret.html" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 cursor-default">
+                <i class="fas fa-home mr-2"></i> Return Home
+            </a>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-8">
+                PS: There might be an <a href="#" class="text-blue-500 hover:text-blue-600">Easter egg</a> hidden somewhere...
+            </p>
+        </div>
+    </div>
+
+    <style>
+        .glitch-wrapper {
+            overflow: hidden;
+        }
+        .glitch {
+            animation: glitch 1s linear infinite;
+            position: relative;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            text-shadow: 1px 0 blue;
+            top: 0;
+            width: 100%;
+            clip: rect(0, 900px, 0, 0);
+            animation: noise-anim 2s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            text-shadow: -1px 0 red;
+            animation: noise-anim-2 3s infinite linear alternate-reverse;
+        }
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px,0) skew(0deg); }
+            4%, 60% { transform: translate(-2px,0) skew(0deg); }
+            62% { transform: translate(0,0) skew(5deg); }
+        }
+        @keyframes noise-anim {
+            0% { clip: rect(51px, 9999px, 28px, 0); }
+            5% { clip: rect(70px, 9999px, 19px, 0); }
+            10% { clip: rect(92px, 9999px, 13px, 0); }
+            /* ... Add more keyframes as needed ... */
+            100% { clip: rect(78px, 9999px, 52px, 0); }
+        }
+        @keyframes noise-anim-2 {
+            0% { clip: rect(18px, 9999px, 57px, 0); }
+            5% { clip: rect(34px, 9999px, 22px, 0); }
+            10% { clip: rect(46px, 9999px, 33px, 0); }
+            /* ... Add more keyframes as needed ... */
+            100% { clip: rect(64px, 9999px, 27px, 0); }
+        }
+    </style>
+
+    <script>
+        // Initialize GSAP animations
+        gsap.from('.glitch-wrapper', {
+            y: -100,
+            opacity: 0,
+            duration: 1,
+            ease: 'bounce.out'
+        });
+
+        gsap.from('h2', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            delay: 0.5
+        });
+
+        gsap.from('p', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            delay: 0.7
+        });
+
+        gsap.from('a', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            delay: 0.9,
+            stagger: 0.2
+        });
+    </script>
+</body>
+</html>
