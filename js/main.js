@@ -341,7 +341,7 @@ function setupContactForm() {
             
             const response = await emailjs.send(
                 "service_zr76d69",
-                "template_mgmu4kr",
+                "template_mg475mf",
                 templateParams
             );
             
@@ -741,8 +741,7 @@ async function initializeTerminal() {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Initialize EmailJS with a promise
-        await emailjs.init("BweEaqR992ldwGz_3");
+        await emailjs.init("BweEaqR992ldwGz_3");  // This is correct
         console.log("EmailJS initialized successfully");
     } catch (error) {
         console.error("Failed to initialize EmailJS:", error);
