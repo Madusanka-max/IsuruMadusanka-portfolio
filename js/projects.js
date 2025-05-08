@@ -214,7 +214,7 @@ const projects = [
       "https://github.com/Madusanka-max/HEALTHY-FARM-CROPS-Website-Using-PHP-HTML-CSS-JavaScript-SQL.git",
     caseStudy: {
       problem:
-        "Farmers couldn’t easily connect with local buyers or list available produce online.",
+        "Farmers couldn't easily connect with local buyers or list available produce online.",
       role: "Full Stack Developer",
       challenges: [
         "Making listings editable by farmers with little tech experience",
@@ -334,43 +334,51 @@ function initializeSkillsAndProjects() {
 
   function renderProjects() {
     const projectsHTML = projects
-      .filter((project) => {
-        if (selectedSkills.size === 0) return true;
-        return Array.from(selectedSkills).every((skill) =>
-          project.skills.includes(skill)
-        );
-      })
-      .map(createProjectCard)
-      .join("");
+        .filter((project) => {
+            if (selectedSkills.size === 0) return true;
+            return Array.from(selectedSkills).every((skill) =>
+                project.skills.includes(skill)
+            );
+        })
+        .map(createProjectCard)
+        .join("");
 
     const timeline = gsap.timeline();
+    const projectCards = document.querySelectorAll("#filtered-projects .project-card");
 
-    timeline.to("#filtered-projects .project-card", {
-      opacity: 0,
-      y: 20,
-      duration: 0.3,
-      stagger: 0.1,
-      onComplete: () => {
-        filteredProjects.innerHTML = projectsHTML;
-
-        if (projectsHTML === "") {
-          noProjectsMessage.classList.remove("hidden");
-          gsap.to(noProjectsMessage, {
-            opacity: 1,
-            y: 0,
-            duration: 0.3,
-          });
-        } else {
-          noProjectsMessage.classList.add("hidden");
-          gsap.from("#filtered-projects .project-card", {
+    if (projectCards.length > 0) {
+        timeline.to(projectCards, {
             opacity: 0,
             y: 20,
             duration: 0.3,
             stagger: 0.1,
-          });
-        }
-      },
-    });
+            onComplete: () => {
+                filteredProjects.innerHTML = projectsHTML;
+
+                if (projectsHTML === "") {
+                    noProjectsMessage.classList.remove("hidden");
+                    gsap.to(noProjectsMessage, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.3,
+                    });
+                } else {
+                    noProjectsMessage.classList.add("hidden");
+                    const newProjectCards = document.querySelectorAll("#filtered-projects .project-card");
+                    if (newProjectCards.length > 0) {
+                        gsap.from(newProjectCards, {
+                            opacity: 0,
+                            y: 20,
+                            duration: 0.3,
+                            stagger: 0.1,
+                        });
+                    }
+                }
+            },
+        });
+    } else {
+        filteredProjects.innerHTML = projectsHTML;
+    }
   }
 
   function updateSelectedSkills() {

@@ -240,6 +240,11 @@ function setupAvailabilityBadge() {
 function initializeLottieAnimation() {
     const animationContainer = document.getElementById('lottie-typing');
     
+    if (!animationContainer) {
+        console.warn('Lottie animation container not found');
+        return;
+    }
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -332,11 +337,15 @@ function setupContactForm() {
                 message: message.value.trim()
             };
 
-            await emailjs.send(
-                "service_zr76d69",  // EmailJS service ID
-                "template_mgmu4kr", // EmailJS template ID
+            console.log("Attempting to send email with params:", templateParams);
+            
+            const response = await emailjs.send(
+                "service_zr76d69",
+                "template_mgmu4kr",
                 templateParams
             );
+            
+            console.log("Email sent successfully:", response);
 
             submitStatus.textContent = 'Message sent successfully!';
             submitStatus.classList.remove('text-blue-500');
@@ -348,7 +357,7 @@ function setupContactForm() {
             }, 5000);
 
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error sending email:', error);
             submitStatus.textContent = 'Failed to send message. Please try again.';
             submitStatus.classList.remove('text-blue-500');
             submitStatus.classList.add('text-red-500');
@@ -730,9 +739,14 @@ async function initializeTerminal() {
 }
 
 // Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize EmailJS first
-    emailjs.init("BweEaqR992ldwGz_3");
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Initialize EmailJS with a promise
+        await emailjs.init("BweEaqR992ldwGz_3");
+        console.log("EmailJS initialized successfully");
+    } catch (error) {
+        console.error("Failed to initialize EmailJS:", error);
+    }
     
     initializeDarkMode();
     initializeTerminal();
