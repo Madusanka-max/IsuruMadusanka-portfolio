@@ -2,6 +2,7 @@
 function initializeDarkMode() {
     const htmlElement = document.documentElement;
     const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
     
     // Check for saved user preference, first in localStorage, then system setting
     const savedTheme = localStorage.getItem('theme');
@@ -11,8 +12,10 @@ function initializeDarkMode() {
     function setInitialTheme() {
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
             htmlElement.classList.add('dark');
+            updateThemeColor(true);
         } else {
             htmlElement.classList.remove('dark');
+            updateThemeColor(false);
         }
     }
 
@@ -24,6 +27,7 @@ function initializeDarkMode() {
         htmlElement.classList.toggle('dark');
         const isDark = htmlElement.classList.contains('dark');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        updateThemeColor(isDark);
 
         // Animate icons
         const icon = isDark ? 
@@ -38,21 +42,21 @@ function initializeDarkMode() {
 
     // Event listeners
     themeToggle.addEventListener('click', toggleTheme);
+    mobileThemeToggle.addEventListener('click', toggleTheme);
 
     // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         if (!localStorage.getItem('theme')) {
             if (e.matches) {
                 htmlElement.classList.add('dark');
+                updateThemeColor(true);
             } else {
                 htmlElement.classList.remove('dark');
+                updateThemeColor(false);
             }
         }
     });
 }
-
-// Initialize dark mode on page load
-document.addEventListener('DOMContentLoaded', initializeDarkMode);
 
 // Update theme-color meta tag
 function updateThemeColor(isDark) {
@@ -376,6 +380,9 @@ function setupContactForm() {
 
 // Initialize animations
 function initializeAnimations() {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
     // Hero section animations
     const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     
@@ -398,20 +405,11 @@ function initializeAnimations() {
             duration: 0.5
         }, '-=0.4');
 
-    // Floating animation for profile image
-    gsap.to('#profile-container', {
-        y: 15,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut'
-    });
-
-    // About section enhanced animations
+    // About section animations
     const aboutTimeline = gsap.timeline({
         scrollTrigger: {
             trigger: '#about',
-            start: 'top 60%',
+            start: 'top 70%',
             toggleActions: 'play none none reverse'
         }
     });
@@ -456,74 +454,28 @@ function initializeAnimations() {
             duration: 0.4
         }, '-=0.2');
 
-    // Fun facts hover animations
-    const funFacts = document.querySelectorAll('#about .grid > div');
-    funFacts.forEach(fact => {
-        fact.addEventListener('mouseenter', () => {
-            gsap.to(fact, {
-                scale: 1.05,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-        });
-
-        fact.addEventListener('mouseleave', () => {
-            gsap.to(fact, {
-                scale: 1,
-                duration: 0.2,
-                ease: 'power2.in'
-            });
-        });
-    });
-
-    // About section animations
-    gsap.from('.about-title', {
-        scrollTrigger: {
-            trigger: '.about-title',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 0.8
-    });
-
-    gsap.from('.about-content', {
-        scrollTrigger: {
-            trigger: '.about-content',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        },
-        x: -50,
-        opacity: 0,
-        duration: 0.8
-    });
-
     // Education section animations
-    gsap.from('#education h2', {
+    const educationTimeline = gsap.timeline({
         scrollTrigger: {
             trigger: '#education',
-            start: 'top 80%',
+            start: 'top 70%',
             toggleActions: 'play none none reverse'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8
+        }
     });
 
-    // Animate education cards with stagger effect
-    gsap.from('.education-card', {
-        scrollTrigger: {
-            trigger: '#education',
-            start: 'top 60%',
-            toggleActions: 'play none none reverse'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out'
-    });
+    educationTimeline
+        .from('#education h2', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8
+        })
+        .from('.education-card', {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out'
+        }, '-=0.4');
 
     // Add hover animations for education cards
     const educationCards = document.querySelectorAll('.education-card');
@@ -546,55 +498,14 @@ function initializeAnimations() {
             });
         });
     });
-
-    // Awards section animations
-    gsap.from('#awards h2', {
-        scrollTrigger: {
-            trigger: '#awards',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-    });
-
-    // Awards timeline entries animation
-    gsap.from('.award-item', {
-        scrollTrigger: {
-            trigger: '.awards-timeline',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2
-    });
 }
 
 // Mobile menu functionality
 const mobileMenuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
-const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 
 mobileMenuToggle.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
-});
-
-// Make mobile theme toggle work the same as desktop
-mobileThemeToggle.addEventListener('click', () => {
-    htmlElement.classList.toggle('dark');
-    const isDark = htmlElement.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    updateThemeColor(isDark);
-
-    const icon = isDark ? mobileThemeToggle.querySelector('.fa-moon') : mobileThemeToggle.querySelector('.fa-sun');
-    gsap.fromTo(icon, 
-        { rotation: -30, scale: 0.5, opacity: 0 },
-        { rotation: 0, scale: 1, opacity: 1, duration: 0.3 }
-    );
 });
 
 // Close mobile menu when clicking outside
@@ -741,7 +652,7 @@ async function initializeTerminal() {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        await emailjs.init("BweEaqR992ldwGz_3");  // This is correct
+        await emailjs.init("BweEaqR992ldwGz_3");
         console.log("EmailJS initialized successfully");
     } catch (error) {
         console.error("Failed to initialize EmailJS:", error);
