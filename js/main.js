@@ -273,93 +273,70 @@ function scrollToForm() {
     form.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-// Initialize email service
-(function() {
-    emailjs.init("BweEaqR992ldwGz_3");
-})();
+// Initialize EmailJS
+function initializeEmailJS() {
+    try {
+        emailjs.init('BweEaqR992ldwGz_3');
+        console.log('EmailJS initialized successfully');
+    } catch (error) {
+        console.error('EmailJS initialization failed:', error);
+    }
+}
 
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
+    const submitButton = document.getElementById('submitButton');
     const submitStatus = document.getElementById('submitStatus');
 
     function showError(inputId, show = true) {
         const input = document.getElementById(inputId);
+        const errorElement = document.getElementById(`${inputId}Error`);
+        
         if (input) {
             input.classList.toggle('border-red-500', show);
-            const errorElement = document.getElementById(`${inputId}Error`);
-            if (errorElement) {
-                errorElement.classList.toggle('hidden', !show);
-            }
+            input.classList.toggle('ring-red-500', show);
         }
-    }
-
-    function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
         
-        // Get form data
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        let isValid = true;
+        if (errorElement) {
+            errorElement.classList.toggle('hidden', !show);
+        }
+    }
 
-        // Validate inputs
-        if (!name.trim()) {
-            showError('name');
-            isValid = false;
-        }
-        if (!email.trim() || !validateEmail(email)) {
-            showError('email');
-            isValid = false;
-        }
-        if (!message.trim()) {
-            showError('message');
-            isValid = false;
-        }
-
-        if (!isValid) return;
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
 
         // Show loading state
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.innerHTML;
+        const originalContent = submitButton.innerHTML;
         submitButton.disabled = true;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitStatus.textContent = "Sending message...";
+        submitStatus.className = "mt-4 text-blue-600 dark:text-blue-400";
 
-        try {
-            await emailjs.send(
-                "service_zr76d69",
-                "template_mg475mf",
-                {
-                    from_name: name,
-                    from_email: email,
-                    message: message,
-                }
-            );
-
-            // Show success message
-            submitStatus.textContent = "Message sent successfully!";
-            submitStatus.className = "mt-4 text-green-600 dark:text-green-400";
-            contactForm.reset();
-        } catch (error) {
-            // Show error message
-            submitStatus.textContent = "Failed to send message. Please try again.";
-            submitStatus.className = "mt-4 text-red-600 dark:text-red-400";
-            console.error("EmailJS Error:", error);
-        } finally {
-            // Reset button state
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalText;
-        }
+        emailjs.sendForm('service_zr76d69', 'template_mg475mf', contactForm)
+            .then(() => {
+                submitStatus.textContent = "Message sent successfully! I'll get back to you soon.";
+                submitStatus.className = "mt-4 text-green-600 dark:text-green-400";
+                contactForm.reset();
+            })
+            .catch((error) => {
+                console.error('EmailJS Error:', error);
+                submitStatus.textContent = "Failed to send message. Please try again later.";
+                submitStatus.className = "mt-4 text-red-600 dark:text-red-400";
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalContent;
+            });
     });
 
     // Clear errors on input
     ['name', 'email', 'message'].forEach(id => {
         const input = document.getElementById(id);
         if (input) {
-            input.addEventListener('input', () => showError(id, false));
+            input.addEventListener('input', () => {
+                showError(id, false);
+                submitStatus.textContent = "";
+            });
         }
     });
 }
@@ -731,7 +708,7 @@ async function initializeTerminal() {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize EmailJS first
-    emailjs.init("BweEaqR992ldwGz_3");
+    initializeEmailJS();
     
     initializeDarkMode();
     initializeTerminal();
