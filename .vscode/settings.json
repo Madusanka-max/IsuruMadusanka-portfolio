@@ -1,3 +1,17 @@
 {
-    "livePreview.defaultPreviewPath": "/index.html"
+    "livePreview.defaultPreviewPath": "/index.html",
+    "cSpell.words": [
+        "Corda",
+        "EXTRU",
+        "FOSS",
+        "gsap",
+        "Hyperledger",
+        "Matale",
+        "NIBM",
+        "noopener",
+        "noreferrer",
+        "RUSL",
+        "underserved",
+        "yoyo"
+    ]
 }
