@@ -179,17 +179,17 @@ function setupJobCards() {
         {
             title: 'GSoC Mentor?',
             icon: '🎯',
-            message: `Hi Isuru,\n\nI'm interested in having you as a GSoC mentor for my project. Would love to discuss potential collaboration opportunities.\n\nBest regards`
+            message: `Hi Isuru,\n\nI'm interested in having you as a GSoC mentor for my project. Would love to discuss potential collaboration opportunities.\n\nBest regards,`
         },
         {
             title: 'Tech Internship?',
             icon: '🏢',
-            message: `Hi Isuru,\n\nI'm reaching out regarding potential internship opportunities. Your experience in IoT and blockchain is exactly what we're looking for.\n\nLooking forward to your response`
+            message: `Hi Isuru,\n\nI'm reaching out regarding potential internship opportunities. Your experience in Web Development, IoT and blockchain is exactly what we're looking for.\n\nLooking forward to your response\n\nBest regards,`
         },
         {
             title: 'Want to Collaborate?',
             icon: '💡',
-            message: `Hi Isuru,\n\nI came across your portfolio and I'm impressed by your work. I have an exciting project idea that combines IoT with blockchain, and I'd love to collaborate.\n\nBest regards`
+            message: `Hi Isuru,\n\nI came across your portfolio and I'm impressed by your work. I have an exciting project idea that combines Web Development, IoT and blockchain, and I'd love to collaborate.\n\nBest regards,`
         }
     ];
 
