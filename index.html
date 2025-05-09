@@ -1,15 +1,107 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Isuru Madusanka Rodrigo - Web Developer specializing in full-stack development, IoT, and blockchain solutions">
+    <!-- iOS/Safari compatibility -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="/assets/images/I.png">
+    <link rel="mask-icon" href="/assets/images/I.png" color="#1f2937">
+    <!-- Content Security Policy --><meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net https://cdn.tailwindcss.com;
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        img-src 'self' data: https: blob:;
+        font-src 'self' data: https://cdnjs.cloudflare.com;
+        connect-src 'self' https://api.emailjs.com ws://127.0.0.1:* ws://localhost:* wss://localhost:*;
+        worker-src 'self' blob:;
+        manifest-src 'self';
+        form-action 'self';
+        base-uri 'self';
+        frame-src 'none';
+        object-src 'none';
+        block-all-mixed-content;">
     <!-- Theme color meta tags -->
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)">
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Isuru Madusanka Rodrigo - Web Developer">
+    <meta property="og:description" content="Full-stack developer specializing in web development, IoT, and blockchain solutions">
+    <meta property="og:type" content="website">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Isuru Madusanka Rodrigo",
+        "url": "https://isurumadusanka.com",
+        "image": "assets/images/profile.png",
+        "sameAs": [
+            "https://github.com/Madusanka-max",
+            "https://www.linkedin.com/in/Isuru-Madusanka-Rodrigo"
+        ],
+        "jobTitle": "Web Developer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Rajarata University"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Rajarata University of Sri Lanka"
+        },
+        "description": "Full-stack developer specializing in web development, IoT, and blockchain solutions",
+        "knowsAbout": ["Web Development", "IoT", "Blockchain", "Full Stack Development"],
+        "email": "isuru.rodrigo1243@gmail.com",
+        "telephone": "+94714288427",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Matale",
+            "addressCountry": "Sri Lanka"
+        }
+    }
+    </script>
     <title>Isuru Madusanka Rodrigo - Web Developer</title>
     <link rel="icon" href="assets/images/I.png" type="image/png">
-    <link href="/css/style.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Service Worker Registration -->    <script nonce="emailjs-random">
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New content is available, show update notification
+                                    const updateNotification = document.createElement('div');
+                                    updateNotification.className = 'fixed bottom-4 right-4 bg-blue-600 text-white p-4 rounded-lg shadow-lg';
+                                    updateNotification.innerHTML = `
+                                        New content is available! 
+                                        <button onclick="window.location.reload()" class="ml-2 underline">
+                                            Refresh
+                                        </button>
+                                    `;
+                                    document.body.appendChild(updateNotification);
+                                }
+                            });
+                        });
+                    })
+                    .catch(err => {
+                        console.error('ServiceWorker registration failed:', err);
+                    });
+            });
+        }
+    </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
     <!-- Skip to main content -->
@@ -30,8 +122,13 @@
                     <a href="#skills-and-projects" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Skills & Projects</a>
                     <a href="#contact" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
                 </div>
-                <button id="menu-toggle" class="md:hidden" title="Toggle navigation menu" aria-label="Toggle navigation menu">
-                    <i class="fas fa-bars text-xl dark:text-white"></i>
+                <button id="menu-toggle" 
+                    class="md:hidden" 
+                    title="Toggle navigation menu" 
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu">
+                    <i class="fas fa-bars text-xl dark:text-white" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -47,15 +144,18 @@
     </button>
 
     <!-- Mobile Menu -->
-    <div class="hidden fixed inset-0 bg-white dark:bg-gray-800 z-40 md:hidden" id="mobile-menu">
+    <div class="hidden fixed inset-0 bg-white dark:bg-gray-800 z-40 md:hidden" 
+        id="mobile-menu" 
+        role="navigation" 
+        aria-label="Mobile navigation">
         <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#about" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
-            <a href="#education" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Education</a>
-            <a href="#awards" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Awards</a>
-            <a href="#skills-and-projects" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Skills & Projects</a>
-            <a href="#contact" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
+            <a href="#about" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-4 py-2">About</a>
+            <a href="#education" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-4 py-2">Education</a>
+            <a href="#awards" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-4 py-2">Awards</a>
+            <a href="#skills-and-projects" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-4 py-2">Skills & Projects</a>
+            <a href="#contact" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-4 py-2">Contact</a>
             <button id="mobile-theme-toggle" 
-                    class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 transition-colors"
+                    class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     aria-label="Toggle dark mode">
                 <i class="fas fa-sun text-yellow-500 dark:hidden" aria-hidden="true"></i>
                 <i class="fas fa-moon text-blue-400 hidden dark:inline" aria-hidden="true"></i>
@@ -103,9 +203,14 @@
                     </div>
 
                     <div class="w-48 h-48 md:w-64 md:h-64 mb-8 md:mb-0 relative order-1 md:order-2" id="profile-container">
-                        <img src="assets/images/profile.png" alt="Isuru Madusanka Rodrigo" 
+                        <img src="assets/images/profile.png" 
+                             alt="Isuru Madusanka Rodrigo" 
                              class="rounded-full w-full h-full object-cover shadow-lg"
-                             onerror="this.src='https://via.placeholder.com/400x400.png?text=Isuru Madusanka Rodrigo'">
+                             loading="lazy"
+                             decoding="async"
+                             onerror="this.src='https://via.placeholder.com/400x400.png?text=Isuru Madusanka Rodrigo'"
+                             srcset="assets/images/profile.webp 1x, assets/images/profile@2x.webp 2x"
+                             sizes="(max-width: 768px) 192px, 256px">
                         <div class="absolute inset-0 rounded-full bg-blue-500 opacity-10"></div>
                     </div>
                 </div>
@@ -124,16 +229,14 @@
                         <!-- Left Column - Animation/Image -->
                         <div class="w-full lg:w-1/2">
                             <div class="relative">
-                                <!-- Lottie Animation Container -->
-                                <lottie-player 
-                                    src="https://assets8.lottiefiles.com/packages/lf20_w51pcehl.json"
-                                    background="transparent"
+                                <!-- Lottie Animation Container -->                                <lottie-player 
+                                    src="/assets/animations/developer-animation.json"
                                     speed="1"
-                                    style="height: 400px"
                                     hover
                                     loop
                                     autoplay
-                                    class="about-animation">
+                                    class="about-animation"
+                                    onerror="this.parentNode.innerHTML = '<div class=\'flex items-center justify-center w-full h-full bg-blue-50 dark:bg-blue-900/50 rounded-lg\'><span class=\'text-blue-600 dark:text-blue-300 text-6xl\'>👨‍💻</span></div>'">
                                 </lottie-player>
                             </div>
                         </div>
@@ -512,48 +615,74 @@
                         <!-- Right Column - Contact Form -->
                         <div class="w-full md:w-3/5 p-8">
                             <div class="max-w-lg mx-auto">
-                                <h3 class="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Send me a message</h3>
-                                <form id="contactForm" class="space-y-6" novalidate>
-                                    <div>
-                                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                                <h3 class="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Send me a message</h3>                                <form id="contactForm" 
+                                      class="space-y-6" 
+                                      novalidate 
+                                      aria-label="Contact form"
+                                      role="form">
+                                    <div role="group" aria-labelledby="name-label">
+                                        <label id="name-label" for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
                                         <input type="text" 
                                                id="name" 
                                                name="name" 
                                                required 
                                                aria-required="true"
+                                               aria-describedby="nameError"
+                                               placeholder="Your name"
+                                               minlength="2"
+                                               autocomplete="name"
                                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200 hover:border-blue-500">
                                         <p class="text-red-500 text-sm mt-1 hidden" id="nameError" role="alert">Please enter your name</p>
                                     </div>
-                                    
-                                    <div>
-                                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                                      <div role="group" aria-labelledby="email-label">
+                                        <label id="email-label" for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
                                         <input type="email" 
                                                id="email" 
                                                name="email" 
                                                required 
                                                aria-required="true"
+                                               aria-describedby="emailError"
+                                               placeholder="your.email@example.com"
+                                               autocomplete="email"
+                                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200 hover:border-blue-500">
                                         <p class="text-red-500 text-sm mt-1 hidden" id="emailError" role="alert">Please enter a valid email address</p>
                                     </div>
-                                    
-                                    <div>
-                                        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                                      <div role="group" aria-labelledby="message-label">
+                                        <label id="message-label" for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
                                         <textarea id="message" 
                                                   name="message" 
                                                   required 
                                                   aria-required="true"
+                                                  aria-describedby="messageError"
+                                                  placeholder="Type your message here..."
+                                                  minlength="10"
+                                                  maxlength="1000"
                                                   rows="4" 
                                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all duration-200 hover:border-blue-500 resize-none"></textarea>
                                         <p class="text-red-500 text-sm mt-1 hidden" id="messageError" role="alert">Please enter your message</p>
                                     </div>
-                                    
-                                    <button type="submit" 
-                                            class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform transition-all duration-200 shadow-lg hover:shadow-xl">
-                                        Send Message
-                                        <i class="fas fa-paper-plane ml-2"></i>
+                                      <button type="submit" 
+                                            class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                                            aria-label="Send message"
+                                            data-loading-text="Sending..."
+                                            data-success-text="Message sent!"
+                                            data-error-text="Failed to send">
+                                        <span class="inline-flex items-center">
+                                            <span class="mr-2">Send Message</span>
+                                            <i class="fas fa-paper-plane transition-transform duration-200" aria-hidden="true"></i>
+                                        </span>
                                     </button>
 
-                                    <p id="submitStatus" class="text-center mt-4 hidden"></p>
+                                    <p id="submitStatus" 
+                                       class="text-center mt-4 hidden" 
+                                       role="status" 
+                                       aria-live="polite"></p>
+                                    
+                                    <div class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+                                        <p>* All fields are required</p>
+                                        <p>* Your information is protected and will never be shared</p>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -573,31 +702,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="https://cdn.tailwindcss.com" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <!-- Tailwind configuration -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof tailwind !== 'undefined') {
-                tailwind.config = {
-                    darkMode: 'class',
-                    theme: {
-                        extend: {
-                            colors: {
-                                primary: '#3b82f6',
-                                secondary: '#06b6d4',
-                                accent: '#facc15',
-                                background: '#f9fafb',
-                                darkBackground: '#0f172a',
-                                softDark: '#1e293b'
-                            }
-                        }
-                    }
-                };
-            }
-        });
-    </script>
+    <script src="js/error-boundary.js" defer></script>
     <script type="module" src="/js/main.js" defer></script>
 </body>
 </html>

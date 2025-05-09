@@ -149,34 +149,64 @@ export function initializeAnimations() {
     });
 }
 
-// Initialize Lottie animation
+// Initialize Lottie animation with error handling and performance optimization
 export function initializeLottieAnimation() {
-    const animationContainer = document.getElementById('lottie-typing');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animationContainer.play();
-            } else {
-                animationContainer.pause();
-            }
-        });
-    }, { threshold: 0.5 });
+    const container = document.querySelector('.about-animation');
+    if (!container) {
+        console.error('Animation container not found');
+        return;
+    }
 
-    observer.observe(animationContainer);
-
-    // Add scaling animation on hover
-    animationContainer.addEventListener('mouseenter', () => {
-        gsap.to(animationContainer, {
-            scale: 1.05,
-            duration: 0.3
-        });
+    // Error handling for animation loading
+    let errorShown = false;
+    container.addEventListener('error', (error) => {
+        if (!errorShown) {
+            console.error('Lottie animation error:', error);
+            const fallbackDiv = document.createElement('div');
+            fallbackDiv.className = 'lottie-fallback';
+            fallbackDiv.innerHTML = '<span>👨‍💻</span>';
+            container.parentNode.appendChild(fallbackDiv);
+            container.style.display = 'none';
+            errorShown = true;
+        }
     });
 
-    animationContainer.addEventListener('mouseleave', () => {
-        gsap.to(animationContainer, {
-            scale: 1,
-            duration: 0.3
+    // Performance optimization using Intersection Observer
+    let animationPlaying = false;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animationPlaying) {
+                try {
+                    container.play();
+                    animationPlaying = true;
+                } catch (error) {
+                    console.error('Failed to play animation:', error);
+                }
+            } else if (!entry.isIntersecting && animationPlaying) {
+                try {
+                    container.pause();
+                    animationPlaying = false;
+                } catch (error) {
+                    console.error('Failed to pause animation:', error);
+                }
+            }
         });
+    }, { 
+        threshold: 0.2,
+        rootMargin: '50px'
+    });
+
+    observer.observe(container);
+
+    // Cleanup on page unload
+    window.addEventListener('unload', () => {
+        observer.disconnect();
+        if (container.destroy) {
+            try {
+                container.destroy();
+            } catch (error) {
+                console.error('Failed to cleanup animation:', error);
+            }
+        }
     });
 }

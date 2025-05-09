@@ -1,5 +1,66 @@
 /* Custom styles and animations */
 
+/* Form error shake animation */
+@keyframes error-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+}
+
+.error-shake {
+    animation: error-shake 0.5s ease-in-out;
+}
+
+/* Form validation styling */
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+    border-color: #EF4444;
+    background-color: #FEF2F2;
+}
+
+.dark input:invalid:not(:placeholder-shown),
+.dark textarea:invalid:not(:placeholder-shown) {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Success animation */
+@keyframes success-check {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.success-animation i {
+    animation: success-check 0.5s ease-in-out forwards;
+}
+
+/* Submit button loading animation */
+@keyframes submit-loading {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.submit-loading {
+    position: relative;
+    cursor: not-allowed;
+}
+
+.submit-loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-right-color: currentColor;
+    border-radius: 50%;
+    animation: submit-loading 0.6s linear infinite;
+}
+
 /* Smooth scrolling behavior for the entire page */
 html {
     scroll-behavior: smooth;
@@ -111,6 +172,7 @@ body {
     background: var(--timeline-color, #3b82f6);
     opacity: 0.2;
 }
+}
 
 .dark .timeline-item:not(:last-child) .w-0.5 {
     --timeline-color: #3b82f6;
@@ -152,6 +214,67 @@ input:focus, textarea:focus {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-1px); }
     75% { transform: translateX(1px); }
+}
+
+/* Contact form animations */
+@keyframes error-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+}
+
+.error-shake {
+    animation: error-shake 0.5s ease-in-out;
+}
+
+/* Form validation styling */
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+    border-color: theme('colors.red.500');
+    background-color: theme('colors.red.50');
+}
+
+.dark input:invalid:not(:placeholder-shown),
+.dark textarea:invalid:not(:placeholder-shown) {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Success state animations */
+@keyframes success-checkmark {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.success-animation i {
+    animation: success-checkmark 0.5s ease-in-out forwards;
+}
+
+/* Submit button loading state */
+@keyframes submit-loading {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+button[type="submit"].loading {
+    position: relative;
+    cursor: not-allowed;
+}
+
+button[type="submit"].loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-right-color: currentColor;
+    border-radius: 50%;
+    animation: submit-loading 0.6s linear infinite;
 }
 
 /* Contact info icon animations */
@@ -498,4 +621,53 @@ input:focus, textarea:focus {
 
 .gsap-hero {
     transform-origin: center;
+}
+
+/* Lottie animation container */
+.about-animation {
+    width: 100%;
+    height: 400px;
+    transition: transform 0.3s ease;
+}
+
+.about-animation:hover {
+    transform: scale(1.05);
+}
+
+/* Lottie animation fallback */
+.lottie-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 400px;
+    background-color: rgb(239 246 255);
+    border-radius: 0.5rem;
+}
+
+.dark .lottie-fallback {
+    background-color: rgba(30, 58, 138, 0.5);
+}
+
+.lottie-fallback span {
+    font-size: 4rem;
+    color: rgb(37 99 235);
+}
+
+.dark .lottie-fallback span {
+    color: rgb(147 197 253);
+}
+
+/* Lottie player container */
+lottie-player.about-animation {
+    height: 400px;
+    width: 100%;
+    background: transparent;
+}
+
+/* Ensure proper aspect ratio on mobile */
+@media (max-width: 768px) {
+    lottie-player.about-animation {
+        height: 300px;
+    }
 }

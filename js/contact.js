@@ -187,15 +187,38 @@ function setupSubmitButton() {
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
     const submitStatus = document.getElementById('submitStatus');
+    let isSubmitting = false;
 
-    function showError(inputId, show = true) {
+    function showError(inputId, message = '', show = true) {
         const errorElement = document.getElementById(`${inputId}Error`);
+        if (message) errorElement.textContent = message;
         errorElement.classList.toggle('hidden', !show);
+        
+        // Add shake animation
+        const input = document.getElementById(inputId);
+        input.classList.add('error-shake');
+        setTimeout(() => input.classList.remove('error-shake'), 500);
     }
 
     function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        // More comprehensive email validation
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return emailRegex.test(email.toLowerCase());
     }
+
+    // Rate limiting
+    const rateLimiter = {
+        lastSubmit: 0,
+        minWaitTime: 30000, // 30 seconds between submissions
+        isRateLimited() {
+            const now = Date.now();
+            if (now - this.lastSubmit < this.minWaitTime) {
+                return true;
+            }
+            this.lastSubmit = now;
+            return false;
+        }
+    };
 
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -231,39 +254,127 @@ function setupContactForm() {
 
         const submitButton = contactForm.querySelector('button[type="submit"]');
         submitButton.disabled = true;
-        
+          if (isSubmitting) {
+            return; // Prevent double submission
+        }
+
+        if (rateLimiter.isRateLimited()) {
+            submitStatus.textContent = 'Please wait a moment before sending another message';
+            submitStatus.classList.remove('hidden', 'text-green-500', 'text-blue-500');
+            submitStatus.classList.add('text-red-500');
+            return;
+        }
+
+        isSubmitting = true;
+        submitStatus.textContent = 'Sending...';
+        submitStatus.classList.remove('hidden', 'text-red-500', 'text-green-500');
+        submitStatus.classList.add('text-blue-500');
+
         try {
-            submitStatus.textContent = 'Sending...';
-            submitStatus.classList.remove('hidden', 'text-red-500', 'text-green-500');
-            submitStatus.classList.add('text-blue-500');
+            // Add loading animation to button
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalContent = submitButton.innerHTML;
+            submitButton.innerHTML = `
+                <svg class="animate-spin h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+            `;
 
             const templateParams = {
                 from_name: name.value.trim(),
                 reply_to: email.value.trim(),
-                message: message.value.trim()
+                message: message.value.trim(),
+                timestamp: new Date().toISOString(),
+                user_agent: navigator.userAgent
             };
 
-            await emailjs.send(
-                "service_zr76d69",  // EmailJS service ID
-                "template_mg475mf", // EmailJS template ID
+            const response = await emailjs.send(
+                "service_zr76d69",
+                "template_mg475mf",
                 templateParams
             );
 
-            submitStatus.textContent = 'Message sent successfully!';
+            if (response.status !== 200) {
+                throw new Error('Failed to send message');
+            }
+
+            // Success feedback
+            submitStatus.textContent = 'Message sent successfully! 🎉';
             submitStatus.classList.remove('text-blue-500');
             submitStatus.classList.add('text-green-500');
-            contactForm.reset();
+            
+            // Reset form with animation
+            gsap.to(contactForm, {
+                scale: 1.02,
+                duration: 0.2,
+                onComplete: () => {
+                    contactForm.reset();
+                    gsap.to(contactForm, {
+                        scale: 1,
+                        duration: 0.2
+                    });
+                }
+            });
+
+            // Restore button
+            submitButton.innerHTML = `
+                <i class="fas fa-check mr-2"></i>
+                Sent Successfully
+            `;
+            
+            // Reset button after delay
+            setTimeout(() => {
+                submitButton.innerHTML = originalContent;
+            }, 3000);
 
             setTimeout(() => {
                 submitStatus.classList.add('hidden');
-            }, 5000);
-
-        } catch (error) {
+            }, 5000);        } catch (error) {
             console.error('Error:', error);
-            submitStatus.textContent = 'Failed to send message. Please try again.';
+            
+            // Detailed error feedback
+            let errorMessage = 'Failed to send message. ';
+            if (error.status === 429) {
+                errorMessage += 'Too many requests. Please try again later.';
+            } else if (!navigator.onLine) {
+                errorMessage += 'Please check your internet connection.';
+            } else {
+                errorMessage += 'Please try again or use alternative contact methods.';
+            }
+            
+            submitStatus.textContent = errorMessage;
             submitStatus.classList.remove('text-blue-500');
             submitStatus.classList.add('text-red-500');
+
+            // Error animation on form
+            gsap.to(contactForm, {
+                x: [-10, 10, -10, 10, 0],
+                duration: 0.5,
+                ease: "power2.inOut"
+            });
+
+            // Reset button with error state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.innerHTML = `
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                Try Again
+            `;
+            submitButton.classList.add('bg-red-600', 'hover:bg-red-700');
+            
+            // Reset button state after delay
+            setTimeout(() => {
+                submitButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                submitButton.innerHTML = `
+                    <i class="fas fa-paper-plane mr-2"></i>
+                    Send Message
+                `;
+            }, 3000);
+
         } finally {
+            isSubmitting = false;
+            const submitButton = contactForm.querySelector('button[type="submit"]');
             submitButton.disabled = false;
         }
     });

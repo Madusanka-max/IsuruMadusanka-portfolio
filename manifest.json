@@ -1,0 +1,21 @@
+{
+    "name": "Isuru Madusanka Rodrigo - Web Developer",
+    "short_name": "IMR Portfolio",
+    "description": "Portfolio website of Isuru Madusanka Rodrigo - Web Developer specializing in full-stack development, IoT, and blockchain solutions",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3b82f6",
+    "icons": [
+        {
+            "src": "assets/images/I.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/I.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+} 

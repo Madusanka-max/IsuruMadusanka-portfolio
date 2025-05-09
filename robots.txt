@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /secret.html
+
+Sitemap: https://isurumadusanka.com/sitemap.xml 
