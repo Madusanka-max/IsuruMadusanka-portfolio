@@ -1,5 +1,5 @@
 // Skills and Projects Data
-const skills = [
+export const skills = [
   "JavaScript",
   "HTML",
   "CSS",
@@ -22,7 +22,7 @@ const skills = [
   "YOLOv8",
 ];
 
-const projects = [
+export const projects = [
   {
     title: "ESP32-CAM CCTV System",
     description:
@@ -265,7 +265,7 @@ const projects = [
 ];
 
 // Skills and Projects functionality
-function initializeSkillsAndProjects() {
+export function initializeSkillsAndProjects() {
   const skillsGrid = document.getElementById("skills-grid");
   const filteredProjects = document.getElementById("filtered-projects");
   const selectedSkillsContainer = document.getElementById("selected-skills");
@@ -548,6 +548,3 @@ function initializeSkillsAndProjects() {
     }
   });
 }
-
-// Initialize when DOM is loaded
-document.addEventListener("DOMContentLoaded", initializeSkillsAndProjects);

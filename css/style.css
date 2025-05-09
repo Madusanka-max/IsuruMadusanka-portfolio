@@ -489,3 +489,13 @@ input:focus, textarea:focus {
 .zoomed-image-overlay.active img {
     transform: scale(1);
 }
+
+/* GSAP Compatibility */
+[class*='gsap-'] {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.gsap-hero {
+    transform-origin: center;
+}
