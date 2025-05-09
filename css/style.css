@@ -34,6 +34,13 @@ body {
     }
 }
 
+/* Initial visibility states */
+.hero-text, .about-title, .education-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
 /* Global theme transition */
 *, *::before, *::after {
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
@@ -104,7 +111,7 @@ body {
 }
 
 /* Timeline connector line */
-.timeline-item:not(:last-child) .w-0.5 {
+.timeline-item:not(:last-child) .w-0\.5 {
     height: 100%;
     position: absolute;
     top: 24px;
@@ -112,7 +119,7 @@ body {
     opacity: 0.2;
 }
 
-.dark .timeline-item:not(:last-child) .w-0.5 {
+.dark .timeline-item:not(:last-child) .w-0\.5 {
     --timeline-color: #3b82f6;
     opacity: 0.1;
 }
@@ -488,4 +495,16 @@ input:focus, textarea:focus {
 
 .zoomed-image-overlay.active img {
     transform: scale(1);
+}
+
+/* Animation overrides */
+.hero-section, .about-section, .education-section {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.content-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
 }

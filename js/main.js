@@ -383,24 +383,26 @@ function initializeAnimations() {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
+    // Force content visibility
+    const elements = document.querySelectorAll('.hero-text, .about-title, .education-card');
+    elements.forEach(el => {
+        el.style.opacity = '1';
+        el.style.visibility = 'visible';
+        el.classList.add('content-visible');
+    });
+
     // Hero section animations
-    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    
+    const heroTl = gsap.timeline({ 
+        defaults: { ease: 'power3.out' }
+    });
+
     heroTl
         .from('#profile-container', {
             scale: 0.5,
-            opacity: 0,
             duration: 1.2
         })
-        .from('.hero-text', {
-            y: 50,
-            opacity: 0,
-            stagger: 0.2,
-            duration: 0.8
-        }, '-=0.8')
         .from('.hero-buttons a', {
             y: 20,
-            opacity: 0,
             stagger: 0.1,
             duration: 0.5
         }, '-=0.4');
@@ -415,44 +417,19 @@ function initializeAnimations() {
     });
 
     aboutTimeline
-        .from('.about-title', {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power3.out'
-        })
         .from('.about-animation', {
             scale: 0.8,
-            opacity: 0,
             duration: 1,
             ease: 'elastic.out(1, 0.8)'
-        }, '-=0.4')
+        })
         .from('#about .prose', {
             y: 20,
-            opacity: 0,
             duration: 0.6
-        }, '-=0.2')
+        })
         .from('#about .space-y-4', {
             x: -30,
-            opacity: 0,
             duration: 0.6
-        }, '-=0.3')
-        .from('#about .bg-white\\/50', {
-            y: 20,
-            opacity: 0,
-            duration: 0.6
-        }, '-=0.2')
-        .from('#about .grid > div', {
-            scale: 0.8,
-            opacity: 0,
-            duration: 0.4,
-            stagger: 0.1
-        }, '-=0.3')
-        .from('#about .pt-4', {
-            y: 20,
-            opacity: 0,
-            duration: 0.4
-        }, '-=0.2');
+        });
 
     // Education section animations
     const educationTimeline = gsap.timeline({
@@ -466,201 +443,28 @@ function initializeAnimations() {
     educationTimeline
         .from('#education h2', {
             y: 30,
-            opacity: 0,
             duration: 0.8
         })
         .from('.education-card', {
             y: 50,
-            opacity: 0,
-            duration: 0.8,
             stagger: 0.2,
+            duration: 0.8,
             ease: 'power3.out'
         }, '-=0.4');
-
-    // Add hover animations for education cards
-    const educationCards = document.querySelectorAll('.education-card');
-    educationCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-                y: -10,
-                scale: 1.02,
-                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                duration: 0.3
-            });
-        });
-
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                y: 0,
-                scale: 1,
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                duration: 0.3
-            });
-        });
-    });
 }
 
-// Mobile menu functionality
-const mobileMenuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-
-mobileMenuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
+// Initialize on load
+window.addEventListener('load', () => {
+    if (typeof gsap !== 'undefined') {
+        // Make content visible immediately
+        const elements = document.querySelectorAll('.hero-text, .about-title, .education-card');
+        elements.forEach(el => {
+            el.style.opacity = '1';
+            el.style.visibility = 'visible';
+            el.classList.add('content-visible');
+        });
+        // Initialize animations after content is visible
+        setTimeout(initializeAnimations, 100);
     }
 });
 
-// Awards & Recognition Timeline
-function initializeAwardsTimeline() {
-    // Define awards data
-    const awards = [
-        {
-            year: "2025",
-            title: "Champion – Inter Faculty Volleyball",
-            description: "Led the ICT Faculty team to victory in the university-wide tournament.",
-            icon: "fa-volleyball-ball",
-            iconColor: "text-yellow-500"
-        },
-        {
-            year: "2024",
-            title: "1st Runners-Up – Football (Freshers' Meet)",
-            description: "Contributed to team strategy and defense in the inter-departmental tournament.",
-            icon: "fa-soccer-ball",
-            iconColor: "text-gray-400"
-        },
-        {
-            year: "2024",
-            title: "DevRel Lead – FOSS Community RUSL",
-            description: "Organized tech talks, guided juniors on GitHub, promoted open source culture.",
-            icon: "fa-users",
-            iconColor: "text-green-500"
-        },
-        {
-            year: "2023",
-            title: "Chess Tournament – 2nd Runners-Up",
-            description: "Qualified for finals and secured team bronze at the university chess championship.",
-            icon: "fa-chess",
-            iconColor: "text-yellow-700"
-        },
-    ];
-
-    // Create timeline entries
-    const timelineContainer = document.querySelector('.awards-timeline');
-    if (!timelineContainer) return; // Guard clause
-    
-    // Clear existing entries
-    timelineContainer.innerHTML = '';
-
-    // Add timeline entries immediately without animation delay
-    awards.forEach((award, index) => {
-        const isEven = index % 2 === 0;
-        const entry = document.createElement('article');
-        entry.className = `award-item flex group relative ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`;
-        entry.innerHTML = `
-            <div class="flex-shrink-0 w-16 text-center z-10">
-                <div class="w-4 h-4 bg-blue-500 rounded-full mx-auto ring-4 ring-white dark:ring-gray-900 pulse"></div>
-                <time class="block text-sm text-gray-500 dark:text-gray-400 mt-2">${award.year}</time>
-            </div>
-            <div class="flex-grow ${isEven ? 'md:ml-6' : 'md:mr-6'} bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                <div class="flex items-center gap-2 mb-2">
-                    <i class="fas ${award.icon} ${award.iconColor} text-xl"></i>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">${award.title}</h3>
-                </div>
-                <p class="text-gray-600 dark:text-gray-400">${award.description}</p>
-            </div>
-        `;
-        timelineContainer.appendChild(entry);
-    });
-}
-
-// Call initializeAwardsTimeline immediately after DOM is ready
-document.addEventListener('DOMContentLoaded', initializeAwardsTimeline);
-
-// Re-initialize on any theme changes
-document.addEventListener('themeChanged', initializeAwardsTimeline);
-
-// Terminal typing animation
-async function initializeTerminal() {
-    const terminalLines = [
-        { prompt: '> whoami', output: '👨‍💻 Isuru Madusanka Rodrigo' },
-        { prompt: '> passion', output: '🌐 Web Development, Open Source, Blockchain, IoT' },
-        { prompt: '> mission', output: '🚀 Build secure, scalable tech that matters.' }
-    ];
-    
-    const terminal = document.getElementById('terminal-text');
-    const typeDelay = 50; // Delay between each character
-    const lineDelay = 500; // Delay between lines
-    const loopDelay = 3000; // Delay before starting the next loop
-
-    async function typeTerminal() {
-        // Clear previous content
-        terminal.innerHTML = '';
-        
-        for (const line of terminalLines) {
-            // Create and add prompt line
-            const promptDiv = document.createElement('div');
-            promptDiv.className = 'terminal-line';
-            promptDiv.innerHTML = `<span class="terminal-prompt">${line.prompt}</span>`;
-            terminal.appendChild(promptDiv);
-            
-            // Animate prompt appearing
-            await new Promise(resolve => setTimeout(resolve, 100));
-            promptDiv.classList.add('visible');
-            
-            await new Promise(resolve => setTimeout(resolve, lineDelay));
-            
-            // Create and add output line
-            const outputDiv = document.createElement('div');
-            outputDiv.className = 'terminal-line terminal-output';
-            terminal.appendChild(outputDiv);
-            
-            // Type out each character of the output
-            for (let i = 0; i < line.output.length; i++) {
-                outputDiv.textContent = line.output.slice(0, i + 1);
-                await new Promise(resolve => setTimeout(resolve, typeDelay));
-            }
-            
-            outputDiv.classList.add('visible');
-            await new Promise(resolve => setTimeout(resolve, lineDelay));
-        }
-
-        // Wait before starting the next loop
-        await new Promise(resolve => setTimeout(resolve, loopDelay));
-
-        // Fade out existing content
-        const lines = terminal.querySelectorAll('.terminal-line');
-        lines.forEach(line => {
-            line.style.transition = 'opacity 0.5s';
-            line.style.opacity = '0';
-        });
-
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Start the loop again
-        typeTerminal();
-    }
-
-    // Start the initial loop
-    typeTerminal();
-}
-
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        await emailjs.init("BweEaqR992ldwGz_3");
-        console.log("EmailJS initialized successfully");
-    } catch (error) {
-        console.error("Failed to initialize EmailJS:", error);
-    }
-    
-    initializeDarkMode();
-    initializeTerminal();
-    initializeContactSection();
-    initializeAnimations();
-    initializeAwardsTimeline();
-});
