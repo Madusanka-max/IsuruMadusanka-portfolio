@@ -541,6 +541,54 @@ function initializeAnimations() {
     });
 }
 
+// Initialize sticky scrolling for sections
+function initializeStickyScrolling() {
+    // Get all main sections
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach(section => {
+        // Create a ScrollTrigger for each section
+        ScrollTrigger.create({
+            trigger: section,
+            start: 'top top',
+            end: 'bottom top',
+            pin: true,
+            pinSpacing: false,
+            scrub: true,
+            onEnter: () => {
+                // Add entrance animation when section comes into view
+                gsap.to(section, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            },
+            onLeaveBack: () => {
+                // Add exit animation when scrolling back up
+                gsap.to(section, {
+                    opacity: 0.8,
+                    y: 50,
+                    duration: 0.5
+                });
+            }
+        });
+    });
+}
+// Add initializeStickyScrolling to the DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', () => {
+    // Existing initializations...
+    initializeEmailJS();
+    initializeDarkMode();
+    initializeTerminal();
+    initializeContactSection();
+    initializeAnimations();
+    initializeAwardsTimeline();
+    
+    // Add sticky scrolling initialization
+    initializeStickyScrolling();
+});
+
 // Mobile menu functionality
 const mobileMenuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');

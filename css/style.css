@@ -489,3 +489,20 @@ input:focus, textarea:focus {
 .zoomed-image-overlay.active img {
     transform: scale(1);
 }
+
+
+/* Sticky scrolling styles */
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Ensure sections take up at least full viewport height */
+section {
+    min-height: 100vh;
+    overflow: hidden;
+}
