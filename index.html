@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Theme color meta tags -->    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <!-- Theme color meta tags -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)">
     <title>Isuru Madusanka Rodrigo - Web Developer</title>
     <link rel="icon" href="/assets/images/I.png" type="image/png">
     <link href="./dist/output.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
@@ -40,26 +43,35 @@
         }
     </script>
 </head>
+
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
     <!-- Skip to main content -->
-    <a href="#main-content" 
-       class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white">
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white">
         Skip to main content
     </a>
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm z-50" role="navigation" aria-label="Main navigation">
+    <nav class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm z-50" role="navigation"
+        aria-label="Main navigation">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="#" class="text-xl font-bold text-gray-800 dark:text-white">IMR</a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
-                    <a href="#education" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Education</a>
-                    <a href="#awards" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Awards</a>
-                    <a href="#skills-and-projects" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Skills & Projects</a>
-                    <a href="#contact" class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
+                    <a href="#about"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
+                    <a href="#education"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Education</a>
+                    <a href="#awards"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Awards</a>
+                    <a href="#skills-and-projects"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Skills
+                        & Projects</a>
+                    <a href="#contact"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
                 </div>
-                <button id="menu-toggle" class="md:hidden" title="Toggle navigation menu" aria-label="Toggle navigation menu">
+                <button id="menu-toggle" class="md:hidden" title="Toggle navigation menu"
+                    aria-label="Toggle navigation menu">
                     <i class="fas fa-bars text-xl dark:text-white"></i>
                 </button>
             </div>
@@ -67,10 +79,9 @@
     </nav>
 
     <!-- Theme Toggle Button -->
-    <button id="theme-toggle" 
+    <button id="theme-toggle"
         class="fixed p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:scale-110 hover:shadow-lg z-50 group"
-        aria-label="Toggle dark mode"
-        title="Toggle dark mode">
+        aria-label="Toggle dark mode" title="Toggle dark mode">
         <i class="fas fa-sun text-yellow-500 dark:hidden transition-transform group-hover:rotate-45"></i>
         <i class="fas fa-moon text-blue-400 hidden dark:inline transition-transform group-hover:-rotate-12"></i>
     </button>
@@ -78,14 +89,19 @@
     <!-- Mobile Menu -->
     <div class="hidden fixed inset-0 bg-white dark:bg-gray-800 z-40 md:hidden" id="mobile-menu">
         <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#about" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
-            <a href="#education" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Education</a>
-            <a href="#awards" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Awards</a>
-            <a href="#skills-and-projects" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Skills & Projects</a>
-            <a href="#contact" class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
-            <button id="mobile-theme-toggle" 
-                    class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 transition-colors"
-                    aria-label="Toggle dark mode">
+            <a href="#about"
+                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
+            <a href="#education"
+                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Education</a>
+            <a href="#awards"
+                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Awards</a>
+            <a href="#skills-and-projects"
+                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Skills &
+                Projects</a>
+            <a href="#contact"
+                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
+            <button id="mobile-theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 transition-colors"
+                aria-label="Toggle dark mode">
                 <i class="fas fa-sun text-yellow-500 dark:hidden" aria-hidden="true"></i>
                 <i class="fas fa-moon text-blue-400 hidden dark:inline" aria-hidden="true"></i>
             </button>
@@ -95,16 +111,19 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900" aria-label="Introduction">
+        <section id="hero"
+            class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900"
+            aria-label="Introduction">
             <div class="container mx-auto px-6 py-20">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-12">
                     <div class="w-full lg:w-1/2 text-center md:text-left order-2 md:order-1">
                         <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 hero-text">
                             I'm Isuru Madusanka <br> I build smart things with code, circuits, and open-source thinking.
                         </h1>
-                        
+
                         <!-- Terminal Container -->
-                        <div class="bg-gray-900 text-green-400 p-6 rounded-lg shadow-xl text-left mb-8 font-mono text-sm md:text-base terminal-container">
+                        <div
+                            class="bg-gray-900 text-green-400 p-6 rounded-lg shadow-xl text-left mb-8 font-mono text-sm md:text-base terminal-container">
                             <div id="terminal-text" class="space-y-2">
                                 <!-- Text will be typed here by JavaScript -->
                             </div>
@@ -117,24 +136,26 @@
 
                         <div class="flex flex-wrap justify-center md:justify-start gap-4 hero-buttons">
                             <a href="https://github.com/Madusanka-max" target="_blank" rel="noopener noreferrer"
-                               class="bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center gap-2 hover:scale-105">
+                                class="bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center gap-2 hover:scale-105">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
-                            <a href="https://www.linkedin.com/in/Isuru-Madusanka-Rodrigo" target="_blank" rel="noopener noreferrer"
-                               class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center gap-2 hover:scale-105">
+                            <a href="https://www.linkedin.com/in/Isuru-Madusanka-Rodrigo" target="_blank"
+                                rel="noopener noreferrer"
+                                class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center gap-2 hover:scale-105">
                                 <i class="fab fa-linkedin"></i> LinkedIn
                             </a>
-                            <a href="/assets/Isuru Rodrigo.pdf" download 
-                               class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 flex items-center gap-2 hover:scale-105">
+                            <a href="/assets/Isuru Madusanka Rodrigo.pdf" download
+                                class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 flex items-center gap-2 hover:scale-105">
                                 <i class="fas fa-download"></i> Resume
                             </a>
                         </div>
                     </div>
 
-                    <div class="w-48 h-48 md:w-64 md:h-64 mb-8 md:mb-0 relative order-1 md:order-2" id="profile-container">
-                        <img src="assets/images/profile.png" alt="Isuru Madusanka Rodrigo" 
-                             class="rounded-full w-full h-full object-full shadow-lg"
-                             onerror="this.src='https://via.placeholder.com/400x400.png?text=Isuru Madusanka Rodrigo'">
+                    <div class="w-48 h-48 md:w-64 md:h-64 mb-8 md:mb-0 relative order-1 md:order-2"
+                        id="profile-container">
+                        <img src="assets/images/profile.png" alt="Isuru Madusanka Rodrigo"
+                            class="rounded-full w-full h-full object-full shadow-lg"
+                            onerror="this.src='https://via.placeholder.com/400x400.png?text=Isuru Madusanka Rodrigo'">
                         <div class="absolute inset-0 rounded-full bg-blue-500 opacity-10"></div>
                     </div>
                 </div>
@@ -142,7 +163,9 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-20" aria-label="About Me">
+        <section id="about"
+            class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-20"
+            aria-label="About Me">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-16 about-title dark:text-white">
                     <br>
@@ -154,25 +177,21 @@
                         <div class="w-full lg:w-1/2">
                             <div class="relative">
                                 <!-- Lottie Animation Container -->
-                                <lottie-player 
-                                    src="https://assets8.lottiefiles.com/packages/lf20_w51pcehl.json"
-                                    background="transparent"
-                                    speed="1"
-                                    style="height: 400px"
-                                    hover
-                                    loop
-                                    autoplay
+                                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_w51pcehl.json"
+                                    background="transparent" speed="1" style="height: 400px" hover loop autoplay
                                     class="about-animation">
                                 </lottie-player>
                             </div>
                         </div>
-                        
+
                         <!-- Right Column - Content -->
                         <div class="w-full lg:w-1/2 space-y-8">
                             <!-- Introduction -->
                             <div class="prose lg:prose-xl dark:prose-invert">
                                 <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                                    I'm Isuru — a final-year B.Tech undergraduate from Rajarata University, passionate about building impactful software and embedded systems. I specialize in full-stack development, IoT, and blockchain-based solutions.
+                                    I'm Isuru — a final-year B.Tech undergraduate from Rajarata University, passionate
+                                    about building impactful software and embedded systems. I specialize in full-stack
+                                    development, IoT, and blockchain-based solutions.
                                 </p>
                             </div>
 
@@ -181,31 +200,40 @@
                                 <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">🚀 Current Roles</h3>
                                 <ul class="space-y-3">
                                     <li class="flex items-start space-x-3">
-                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                                        <span
+                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
                                             <i class="fas fa-graduation-cap text-blue-600 dark:text-blue-400"></i>
                                         </span>
-                                        <span class="text-gray-700 dark:text-gray-300">Final-year ICT undergraduate at Rajarata University</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Final-year ICT undergraduate at
+                                            Rajarata University</span>
                                     </li>
                                     <li class="flex items-start space-x-3">
-                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                                        <span
+                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
                                             <i class="fas fa-users text-green-600 dark:text-green-400"></i>
                                         </span>
-                                        <span class="text-gray-700 dark:text-gray-300">Club DevRel of the FOSS Community</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Club DevRel of the FOSS
+                                            Community</span>
                                     </li>
                                     <li class="flex items-start space-x-3">
-                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+                                        <span
+                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
                                             <i class="fas fa-code text-purple-600 dark:text-purple-400"></i>
                                         </span>
-                                        <span class="text-gray-700 dark:text-gray-300">Developer of AI-powered CCTV, Cinnamon Traceability, and Blockchain Health Records</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Developer of AI-powered CCTV,
+                                            Cinnamon Traceability, and Blockchain Health Records</span>
                                     </li>
                                 </ul>
                             </div>
 
                             <!-- Tech Philosophy -->
-                            <div class="bg-white/50 dark:bg-gray-800/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-                                <h3 class="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">🧠 Tech Philosophy</h3>
+                            <div
+                                class="bg-white/50 dark:bg-gray-800/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700">
+                                <h3 class="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">🧠 Tech Philosophy
+                                </h3>
                                 <p class="text-gray-700 dark:text-gray-300">
-                                    "I believe tech should be open, ethical, and human-centered. That's why I build with open-source, contribute to community projects, and mentor upcoming developers."
+                                    "I believe tech should be open, ethical, and human-centered. That's why I build with
+                                    open-source, contribute to community projects, and mentor upcoming developers."
                                 </p>
                             </div>
 
@@ -213,7 +241,8 @@
                             <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                                 <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg backdrop-blur-sm">
                                     <span class="block text-2xl mb-2">🏐</span>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Volleyball player & Chess enthusiast</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Volleyball player & Chess
+                                        enthusiast</p>
                                 </div>
                                 <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg backdrop-blur-sm">
                                     <span class="block text-2xl mb-2">🌍</span>
@@ -221,18 +250,20 @@
                                 </div>
                                 <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg backdrop-blur-sm">
                                     <span class="block text-2xl mb-2">🐧</span>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Loves Web, FOSS, and clean code</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Loves Web, FOSS, and clean code
+                                    </p>
                                 </div>
                                 <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg backdrop-blur-sm">
                                     <span class="block text-2xl mb-2">☕</span>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Survives on caffeine and curiosity</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Survives on caffeine and
+                                        curiosity</p>
                                 </div>
                             </div>
 
                             <!-- CTA Button -->
                             <div class="pt-4">
-                                <a href="#contact" 
-                                   class="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                                <a href="#contact"
+                                    class="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                                     <span class="mr-2">Let's Connect</span>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
@@ -244,94 +275,120 @@
         </section>
 
         <!-- Education Section -->
-        <section id="education" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-20" aria-label="Education">
+        <section id="education"
+            class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-20"
+            aria-label="Education">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-12 text-blue-500 dark:text-blue-400">
                     Education Journey
                 </h2>
                 <div class="max-w-5xl mx-auto grid grid-cols-1 gap-8">
                     <!-- Bachelor's Degree Card -->
-                    <div class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
+                    <div
+                        class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
                         <div class="flex flex-col md:flex-row md:items-start gap-6">
                             <div class="flex-shrink-0">
-                                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
                                     <span class="text-3xl">🎓</span>
                                 </div>
                             </div>
                             <div class="flex-grow">
-                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Bachelor of Technology</h3>
-                                <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">Rajarata University of Sri Lanka</h4>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Bachelor of Technology
+                                </h3>
+                                <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">Rajarata University of Sri
+                                    Lanka</h4>
                                 <p class="text-gray-600 dark:text-gray-300 mb-2">2020 – 2024</p>
-                                <p class="text-gray-700 dark:text-gray-200 mb-4">ICT | Software Engineering | Web | Blockchain | IoT 🧠💻</p>
+                                <p class="text-gray-700 dark:text-gray-200 mb-4">ICT | Software Engineering | Web |
+                                    Blockchain | IoT 🧠💻</p>
                                 <div class="space-y-2">
-                                    <p class="text-gray-600 dark:text-gray-300">• Final-year undergraduate specializing in software project development</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Club DevRel of the FOSS Community – leading DevRel and mentoring peers</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Full-stack + IoT + Blockchain development experience</p>
+                                    <p class="text-gray-600 dark:text-gray-300">• Final-year undergraduate specializing
+                                        in software project development</p>
+                                    <p class="text-gray-600 dark:text-gray-300">• Club DevRel of the FOSS Community –
+                                        leading DevRel and mentoring peers</p>
+                                    <p class="text-gray-600 dark:text-gray-300">• Full-stack + IoT + Blockchain
+                                        development experience</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Diploma Card -->
-                    <div class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
+                    <div
+                        class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
                         <div class="flex flex-col md:flex-row md:items-start gap-6">
                             <div class="flex-shrink-0">
-                                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
                                     <span class="text-3xl">📜</span>
                                 </div>
                             </div>
                             <div class="flex-grow">
-                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Diploma in Information Technology</h3>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Diploma in Information
+                                    Technology</h3>
                                 <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">NIBM Kandy</h4>
                                 <p class="text-gray-600 dark:text-gray-300 mb-2">2018 – 2020</p>
-                                <p class="text-gray-700 dark:text-gray-200 mb-4">Software Engineering & Programming Fundamentals 👨‍💻📘</p>
+                                <p class="text-gray-700 dark:text-gray-200 mb-4">Software Engineering & Programming
+                                    Fundamentals 👨‍💻📘</p>
                                 <div class="space-y-2">
                                     <p class="text-gray-600 dark:text-gray-300">• GPA 3.65/4.0</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Mastered core programming (C, Python, Java)</p>
+                                    <p class="text-gray-600 dark:text-gray-300">• Mastered core programming (C, Python,
+                                        Java)</p>
                                     <p class="text-gray-600 dark:text-gray-300">• Built first real-world projects</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Developed interest in open source and IoT</p>
+                                    <p class="text-gray-600 dark:text-gray-300">• Developed interest in open source and
+                                        IoT</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- A/L Education Card -->
-                    <div class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
+                    <div
+                        class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
                         <div class="flex flex-col md:flex-row md:items-start gap-6">
                             <div class="flex-shrink-0">
-                                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
                                     <span class="text-3xl">📚</span>
                                 </div>
                             </div>
                             <div class="flex-grow">
-                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">GCE Advanced Level</h3>
-                                <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">St. Thomas' College, Matale</h4>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">GCE Advanced Level
+                                </h3>
+                                <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">St. Thomas' College, Matale
+                                </h4>
                                 <p class="text-gray-600 dark:text-gray-300 mb-2">2019</p>
                                 <p class="text-gray-700 dark:text-gray-200 mb-4">Technology Stream 🖥️⚙️</p>
                                 <div class="space-y-2">
                                     <p class="text-gray-600 dark:text-gray-300">• Results: B1 | C2</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Strengthened analytical and technical focus in ICT</p>
+                                    <p class="text-gray-600 dark:text-gray-300">• Strengthened analytical and technical
+                                        focus in ICT</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- O/L Education Card -->
-                    <div class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
+                    <div
+                        class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
                         <div class="flex flex-col md:flex-row md:items-start gap-6">
                             <div class="flex-shrink-0">
-                                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
                                     <span class="text-3xl">📚</span>
                                 </div>
                             </div>
                             <div class="flex-grow">
-                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">GCE Ordinary Level</h4>
-                                <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">St. Thomas' College, Matale</h4>
-                                <p class="text-gray-600 dark:text-gray-300 mb-2">2016</p>
-                                <div class="space-y-2">
-                                    <p class="text-gray-600 dark:text-gray-300">• Results: A5 | B2 | C2</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• First exposure to computing and structured problem solving</p>
-                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">GCE Ordinary Level
+                                    </h4>
+                                    <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">St. Thomas' College,
+                                        Matale</h4>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-2">2016</p>
+                                    <div class="space-y-2">
+                                        <p class="text-gray-600 dark:text-gray-300">• Results: A5 | B2 | C2</p>
+                                        <p class="text-gray-600 dark:text-gray-300">• First exposure to computing and
+                                            structured problem solving</p>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -340,10 +397,13 @@
         </section>
 
         <!-- Awards & Recognition Timeline -->
-        <section id="awards" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900" aria-label="Awards and Recognition Timeline">
+        <section id="awards" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900"
+            aria-label="Awards and Recognition Timeline">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white transform transition-all duration-300">
-                    <span aria-hidden="true" class="inline-block mb-2 transform hover:scale-110 transition-transform">🏆</span>
+                <h2
+                    class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white transform transition-all duration-300">
+                    <span aria-hidden="true"
+                        class="inline-block mb-2 transform hover:scale-110 transition-transform">🏆</span>
                     <br class="md:hidden">
                     Awards & Recognition
                 </h2>
@@ -356,15 +416,19 @@
         </section>
 
         <!-- Skills & Projects Section -->
-        <section id="skills-and-projects" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900" aria-label="Skills and Projects">
+        <section id="skills-and-projects"
+            class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900"
+            aria-label="Skills and Projects">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-12">Skills & Projects</h2>
-                
+
                 <!-- Skills Grid -->
                 <div class="mb-12">
                     <h3 class="text-xl font-semibold mb-6 text-center">Technical Skills</h3>
                     <div id="skills-grid" class="flex flex-wrap justify-center gap-3 mb-8">
-                        <button class="skill-filter-btn active px-4 py-2 rounded-full bg-white border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-skill="all">
+                        <button
+                            class="skill-filter-btn active px-4 py-2 rounded-full bg-white border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all"
+                            data-skill="all">
                             Show All
                         </button>
                     </div>
@@ -391,47 +455,51 @@
         <!-- Case Study Modal -->
         <div id="case-study-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
             <div class="min-h-screen flex items-center justify-center p-4">
-                <div class="relative bg-white dark:bg-gray-800 max-w-4xl w-full rounded-xl shadow-2xl transform transition-all">
-                    <button id="close-modal" 
-                            class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-                            aria-label="Close case study"
-                            title="Close case study">
+                <div
+                    class="relative bg-white dark:bg-gray-800 max-w-4xl w-full rounded-xl shadow-2xl transform transition-all">
+                    <button id="close-modal"
+                        class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                        aria-label="Close case study" title="Close case study">
                         <i class="fas fa-times text-xl" aria-hidden="true"></i>
                     </button>
                     <div class="p-8">
                         <div id="case-study-content" class="space-y-8">
                             <h2 class="text-3xl font-bold text-gray-900 dark:text-white"></h2>
-                            
+
                             <!-- Problem Statement -->
                             <div>
-                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Problem Statement</h3>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Problem
+                                    Statement</h3>
                                 <p class="text-gray-600 dark:text-gray-400"></p>
                             </div>
-                            
+
                             <!-- Role -->
                             <div>
                                 <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">My Role</h3>
                                 <p class="text-gray-600 dark:text-gray-400"></p>
                             </div>
-                            
+
                             <!-- Challenges & Solutions -->
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div class="challenges">
-                                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Key Challenges</h3>
+                                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Key
+                                        Challenges</h3>
                                     <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2"></ul>
                                 </div>
                                 <div class="solutions">
-                                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Solutions</h3>
+                                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Solutions
+                                    </h3>
                                     <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2"></ul>
                                 </div>
                             </div>
-                            
+
                             <!-- Key Learnings -->
                             <div>
-                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Key Learnings</h3>
+                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Key Learnings
+                                </h3>
                                 <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2"></ul>
                             </div>
-                            
+
                             <!-- Project Images -->
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="case-study-images"></div>
                         </div>
@@ -441,9 +509,12 @@
         </div>
 
         <!-- Contact Section -->
-        <section id="contact" class="min-h-screen py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900" aria-label="Contact Information">
+        <section id="contact"
+            class="min-h-screen py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900"
+            aria-label="Contact Information">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white contact-title">
+                <h2
+                    class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white contact-title">
                     Get in Touch
                 </h2>
 
@@ -463,7 +534,8 @@
                         <div class="contact-info space-y-6">
                             <!-- Location -->
                             <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
                                     <i class="fas fa-map-marker-alt text-blue-600 dark:text-blue-400"></i>
                                 </div>
                                 <div>
@@ -474,23 +546,27 @@
 
                             <!-- Email -->
                             <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
                                     <i class="fas fa-envelope text-blue-600 dark:text-blue-400"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Email</h3>
-                                    <a href="mailto:isuru.rodrigo1243@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline">isuru.rodrigo1243@gmail.com</a>
+                                    <a href="mailto:isuru.rodrigo1243@gmail.com"
+                                        class="text-blue-600 dark:text-blue-400 hover:underline">isuru.rodrigo1243@gmail.com</a>
                                 </div>
                             </div>
 
                             <!-- Phone -->
                             <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
                                     <i class="fas fa-phone text-blue-600 dark:text-blue-400"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Phone</h3>
-                                    <a href="tel:+94714288427" class="text-blue-600 dark:text-blue-400 hover:underline">+94 71 428 8427</a>
+                                    <a href="tel:+94714288427"
+                                        class="text-blue-600 dark:text-blue-400 hover:underline">+94 71 428 8427</a>
                                 </div>
                             </div>
                         </div>
@@ -501,7 +577,8 @@
                                 class="w-10 h-10 rounded-full bg-gray-800 dark:bg-gray-700 flex items-center justify-center text-white hover:bg-blue-600 dark:hover:bg-blue-600 transition-colors duration-300">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/Isuru-Madusanka-Rodrigo" target="_blank" rel="noopener noreferrer"
+                            <a href="https://www.linkedin.com/in/Isuru-Madusanka-Rodrigo" target="_blank"
+                                rel="noopener noreferrer"
                                 class="w-10 h-10 rounded-full bg-gray-800 dark:bg-gray-700 flex items-center justify-center text-white hover:bg-blue-600 dark:hover:bg-blue-600 transition-colors duration-300">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -516,12 +593,13 @@
                                 <p>Sunday: Available for urgent matters</p>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                     <!-- Contact Form -->
-                    <form id="contactForm" class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition-all duration-300">
+                    <form id="contactForm"
+                        class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition-all duration-300">
                         <div class="mb-6">
                             <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                            <input type="text" id="name" name="name" 
+                            <input type="text" id="name" name="name"
                                 class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                                 required>
                             <div id="nameError" class="text-red-500 text-sm mt-1 hidden">Please enter your name</div>
@@ -529,18 +607,20 @@
 
                         <div class="mb-6">
                             <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                            <input type="email" id="email" name="email" 
+                            <input type="email" id="email" name="email"
                                 class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                                 required>
-                            <div id="emailError" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address</div>
+                            <div id="emailError" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email
+                                address</div>
                         </div>
 
                         <div class="mb-6">
                             <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4" 
+                            <textarea id="message" name="message" rows="4"
                                 class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                                 required></textarea>
-                            <div id="messageError" class="text-red-500 text-sm mt-1 hidden">Please enter your message</div>
+                            <div id="messageError" class="text-red-500 text-sm mt-1 hidden">Please enter your message
+                            </div>
                         </div>
 
                         <button type="submit" id="submitButton"
@@ -559,9 +639,10 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8" role="contentinfo">
         <div class="container mx-auto px-6 text-center">
-            <p><a href="https://github.com/Madusanka-max">© 2025 Madusanka-MAX</a> | Built with <span class="text-red-500" aria-hidden="true">🤖</span> using HTML | Tailwind CSS | JavaScript</p>
+            <p><a href="https://github.com/Madusanka-max">© 2025 Madusanka-MAX</a> | Built with <span
+                    class="text-red-500" aria-hidden="true">🤖</span> using HTML | Tailwind CSS | JavaScript</p>
         </div>
-    </footer>    <!-- Scripts -->
+    </footer> <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
@@ -569,4 +650,5 @@
     <script src="js/main.js" defer></script>
     <script src="js/projects.js" defer></script>
 </body>
+
 </html>
