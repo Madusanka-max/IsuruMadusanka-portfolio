@@ -268,7 +268,7 @@ const projects = [
   },
   {
     id: 9,
-    title: "Weather Dashboard Application",
+    title: "Weather Application",
     category: "web",
     img: "assets/img/weather-dashboard.jpg",
     description: "Real-time weather dashboard with secure API integration and responsive UI.",
@@ -306,7 +306,7 @@ const projects = [
     img: "assets/img/alobot-demo.jpg",
     description: "Computer vision bot for detecting in-game resources and automating actions for research purposes.",
     skills: ["Python", "YOLO", "OpenCV", "Computer Vision"],
-    github: "#",
+    github: "https://traveller-ananda-rodrigo.vercel.app/",
     caseStudy: {
       problem: "Manual resource harvesting in games is repetitive and inefficient for research-based automation studies.",
       role: "AI Research Developer",
@@ -387,7 +387,7 @@ const INITIAL_PROJECTS = 12;
 function createProjectCard(project) {
     return `
         <div class="work__card mix ${project.category}">
-            <img src="${project.img}" alt="${project.title}" class="work__img">
+            <img src="${project.img}" alt="${project.title}" class="work__img" onerror="this.onerror=null; this.src='assets/img/blank.jpg';">
             <h3 class="work__title">${project.title}</h3>
             <span class="work__button" onclick="openModal(${project.id})">
                 See Details <i class='bx bx-right-arrow work__icon'></i>
