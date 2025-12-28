@@ -1,659 +1,744 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Theme color meta tags -->
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)">
-    <title>Isuru Madusanka Rodrigo - Web Developer</title>
-    <link rel="icon" href="/assets/images/I.png" type="image/png">
-    <link href="./dist/output.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/Draggable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/CustomEase.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/CustomBounce.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/CustomWiggle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/CustomBounce.min.js"></script>
 
-    <!-- Tailwind configuration -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3b82f6',
-                        secondary: '#06b6d4',
-                        accent: '#facc15',
-                        background: '#f9fafb',
-                        darkBackground: '#0f172a',
-                        softDark: '#1e293b'
-                    }
-                }
-            }
-        }
-    </script>
+    <!--=============== FAVICON ===============-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/I.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/I.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/I.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="assets/img/I.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#a789d4">
+
+    <!--=============== BOXICONS ===============-->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <title> Isuru's Portfolio </title>
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress"
-        class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-[60] width-0 transition-all duration-100">
-    </div>
+<body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Isuru</a>
 
-    <!-- Skip to main content -->
-    <a href="#main-content"
-        class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white">
-        Skip to main content
-    </a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item ">
+                        <a href="#home" class="nav__link">
+                            <i class='bx bx-home'></i>
+                        </a>
+                    </li>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm z-50" role="navigation"
-        aria-label="Main navigation">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="#" class="text-xl font-bold text-gray-800 dark:text-white">IMR</a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about"
-                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
-                    <a href="#education"
-                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Education</a>
-                    <a href="#awards"
-                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Awards</a>
-                    <a href="#skills-and-projects"
-                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Skills
-                        & Projects</a>
-                    <a href="#contact"
-                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
-                </div>
-                <button id="menu-toggle" class="md:hidden" title="Toggle navigation menu"
-                    aria-label="Toggle navigation menu">
-                    <i class="fas fa-bars text-xl dark:text-white"></i>
-                </button>
+                    <li class="nav__item ">
+                        <a href="#about" class="nav__link">
+                            <i class='bx bx-user'></i>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#skills" class="nav__link">
+                            <i class='bx bx-book'></i>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#work" class="nav__link">
+                            <i class='bx bx-briefcase-alt-2'></i>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">
+                            <i class='bx bx-message-square-dots'></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </nav>
 
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle"
-        class="fixed p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:scale-110 hover:shadow-lg z-50 group"
-        aria-label="Toggle dark mode" title="Toggle dark mode">
-        <i class="fas fa-sun text-yellow-500 dark:hidden transition-transform group-hover:rotate-45"></i>
-        <i class="fas fa-moon text-blue-400 hidden dark:inline transition-transform group-hover:-rotate-12"></i>
-    </button>
+            <!--=============== theme change button ===============-->
+            <i class='bx bx-moon change-theme change-theme-button' id="theme-button"></i>
 
-    <!-- Mobile Menu -->
-    <div class="hidden fixed inset-0 bg-white dark:bg-gray-800 z-40 md:hidden" id="mobile-menu">
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#about"
-                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a>
-            <a href="#education"
-                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Education</a>
-            <a href="#awards"
-                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Awards</a>
-            <a href="#skills-and-projects"
-                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Skills &
-                Projects</a>
-            <a href="#contact"
-                class="text-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a>
-            <button id="mobile-theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 transition-colors"
-                aria-label="Toggle dark mode">
-                <i class="fas fa-sun text-yellow-500 dark:hidden" aria-hidden="true"></i>
-                <i class="fas fa-moon text-blue-400 hidden dark:inline" aria-hidden="true"></i>
-            </button>
-        </div>
-    </div>
+        </nav>
+    </header>
 
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section id="hero"
-            class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900"
-            aria-label="Introduction">
-            <div class="container mx-auto px-6 py-20">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-12">
-                    <div class="w-full lg:w-1/2 text-center md:text-left order-2 md:order-1">
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 hero-text">
-                            I'm Isuru Madusanka <br> I build smart things with code, circuits, and open-source thinking.
-                        </h1>
+    <!--=============== MAIN ===============-->
+    <main class="main">
+        <!--=============== HOME ===============-->
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <span class="home__greeting">Hello, I'm</span>
+                    <h1 class="home__name">Isuru Madusanka</h1>
+                    <h3 class="home__education">Full-Stack Software Engineer</h3>
+                    <p class="home__description"
+                        style="margin-top: 0.5rem; color: var(--text-color); margin-bottom: 2rem;">
+                        Building clean, scalable web applications with real-world production experience.
+                    </p>
 
-                        <!-- Terminal Container -->
-                        <div
-                            class="bg-gray-900 text-green-400 p-6 rounded-lg shadow-xl text-left mb-8 font-mono text-sm md:text-base terminal-container">
-                            <div id="terminal-text" class="space-y-2">
-                                <!-- Text will be typed here by JavaScript -->
-                            </div>
-                            <div class="terminal-cursor"></div>
+                    <div class="home__button">
+                        <a download="" href="assets/pdf/Isuru Madusanka Rodrigo.pdf" class="button button--ghost">
+                            Download CV
+                        </a>
+
+                        <a href="#about" class="button">About</a>
+                    </div>
+                </div>
+
+                <div class="home__handle">
+                    <img src="assets/img/profile.png" alt="" class="home__img">
+                </div>
+
+                <div class="home__social">
+                    <a href="https://www.linkedin.com/in/Isuru-Madusanka-Rodrigo" target="_blank"
+                        class="home__social-link">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+                    <a href="https://github.com/Madusanka-max" target="_blank" class="home__social-link">
+                        <i class='bx bxl-github'></i>
+                    </a>
+                </div>
+
+                <a href="#about" class="home__scroll">
+                    <i class='bx bx-mouse home__scroll-icon'></i>
+                    <span class="home__scroll-name">Scroll Down</span>
+                </a>
+            </div>
+        </section>
+
+        <!--=============== ABOUT ===============-->
+        <section class="about section" id="about">
+            <span class="section__subtitle">My Intro</span>
+            <h2 class="section__title">About Me</h2>
+
+            <div class="about__container container grid">
+                <img src="assets/img/about.jpg" alt="" class="about__img">
+
+                <div class="about__data">
+                    <div class="about__info">
+                        <div class="about__box">
+                            <i class='bx bx-award about__icon'></i>
+                            <h3 class="about__title">Experience</h3>
+                            <span class="about__subtitle">Industry Exp.</span>
                         </div>
-
-                        <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 hero-text">
-                            Web Developer | Open Source Contributor | IoT & Blockchain Enthusiast
-                        </p>
-
-                        <div class="flex flex-wrap justify-center md:justify-start gap-4 hero-buttons">
-                            <a href="https://github.com/Madusanka-max" target="_blank" rel="noopener noreferrer"
-                                class="bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center gap-2 hover:scale-105">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://www.linkedin.com/in/Isuru-Madusanka-Rodrigo" target="_blank"
-                                rel="noopener noreferrer"
-                                class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center gap-2 hover:scale-105">
-                                <i class="fab fa-linkedin"></i> LinkedIn
-                            </a>
-                            <a href="/assets/Isuru Madusanka Rodrigo.pdf" download
-                                class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 flex items-center gap-2 hover:scale-105">
-                                <i class="fas fa-download"></i> Resume
-                            </a>
+                        <div class="about__box">
+                            <i class='bx bx-briefcase-alt about__icon'></i>
+                            <h3 class="about__title">Completed</h3>
+                            <span class="about__subtitle">8+ Projects</span>
+                        </div>
+                        <div class="about__box">
+                            <i class='bx bx-support about__icon'></i>
+                            <h3 class="about__title">Community</h3>
+                            <span class="about__subtitle">DevRel Lead</span>
                         </div>
                     </div>
 
-                    <div class="w-48 h-48 md:w-64 md:h-64 mb-8 md:mb-0 relative order-1 md:order-2"
-                        id="profile-container">
-                        <img src="assets/images/profile.png" alt="Isuru Madusanka Rodrigo"
-                            class="rounded-full w-full h-full object-full shadow-lg"
-                            onerror="this.src='https://via.placeholder.com/400x400.png?text=Isuru Madusanka Rodrigo'">
-                        <div class="absolute inset-0 rounded-full bg-blue-500 opacity-10"></div>
+                    <p class="about__description">
+                        I am a dedicated and forward-thinking Software Engineer with hands-on experience in full-stack
+                        web development, backend engineering, and UI/UX implementation. Currently completing my BSc
+                        (Hons) in Information & Communication Technology at Rajarata University of Sri Lanka, I have
+                        practical industry experience working on real production systems, including gaming platforms and
+                        large-scale booking applications.
+                        <br><br>
+                        During my internship at eSupport Technologies, I contributed to backend feature development,
+                        frontend refactoring, authentication systems, and database improvements using Laravel, PHP,
+                        JavaScript, and SQL. I value clean architecture, maintainable code, and disciplined engineering
+                        practices, and I am actively seeking opportunities to grow as a professional software engineer.
+                    </p>
+
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a download="" href="assets/pdf/Isuru Madusanka Rodrigo.pdf" class="button">Download CV
+                            (PDF)</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about"
-            class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-20"
-            aria-label="About Me">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-16 about-title dark:text-white">
-                    <br>
-                    About Me
-                </h2>
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex flex-col lg:flex-row items-center gap-12">
-                        <!-- Left Column - Animation/Image -->
-                        <div class="w-full lg:w-1/2">
-                            <div class="relative">
-                                <!-- Lottie Animation Container -->
-                                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_w51pcehl.json"
-                                    background="transparent" speed="1" style="height: 400px" hover loop autoplay
-                                    class="about-animation">
-                                </lottie-player>
+        <!--=============== EXPERIENCE ===============-->
+        <section class="experience section" id="experience">
+            <span class="section__subtitle">My Journey</span>
+            <h2 class="section__title">Professional Experience</h2>
+
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <div class="experience__content">
+                        <h3 class="experience__title"
+                            style="font-size: 1.25rem; font-weight: var(--font-medium); color: var(--title-color);">
+                            Intern Software Developer</h3>
+                        <span class="experience__subtitle"
+                            style="display: block; font-size: 0.875rem; color: var(--text-color); margin-bottom: 1rem;">eSupport
+                            Technologies (Pvt) Ltd | May 2025 – Present</span>
+
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: start;">
+                                <i class='bx bx-check-circle'
+                                    style="color: var(--first-color); font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem;"></i>
+                                <p style="margin: 0; font-size: 0.938rem;">Contributed to development and enhancement of
+                                    a Crash Game platform, including frontend UI improvements, betting logic fixes, and
+                                    backend optimizations.</p>
+                            </li>
+                            <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: start;">
+                                <i class='bx bx-check-circle'
+                                    style="color: var(--first-color); font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem;"></i>
+                                <p style="margin: 0; font-size: 0.938rem;">Implemented features for a Booking Platform,
+                                    including admin authentication, property management, search filters, and partner
+                                    dashboards.</p>
+                            </li>
+                            <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: start;">
+                                <i class='bx bx-check-circle'
+                                    style="color: var(--first-color); font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem;"></i>
+                                <p style="margin: 0; font-size: 0.938rem;">Refactored Laravel controllers, migrations,
+                                    Blade views, and JavaScript components to improve maintainability and performance.
+                                </p>
+                            </li>
+                            <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: start;">
+                                <i class='bx bx-check-circle'
+                                    style="color: var(--first-color); font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem;"></i>
+                                <p style="margin: 0; font-size: 0.938rem;">Collaborated using Git, managing branches,
+                                    resolving conflicts, and merging feature updates.</p>
+                            </li>
+                            <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: start;">
+                                <i class='bx bx-check-circle'
+                                    style="color: var(--first-color); font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem;"></i>
+                                <p style="margin: 0; font-size: 0.938rem;">Assisted in debugging production issues and
+                                    improving overall UI/UX quality.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== EDUCATION ===============-->
+        <section class="education section" id="education">
+            <span class="section__subtitle">My Qualification</span>
+            <h2 class="section__title">Education Journey</h2>
+
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <div class="about__info">
+                        <div class="about__box">
+                            <i class='bx bxs-graduation about__icon'></i>
+                            <h3 class="about__title">B.Tech</h3>
+                            <span class="about__subtitle">Rajarata University</span>
+                            <span class="about__tiny">2020 - 2024</span>
+                        </div>
+                        <div class="about__box">
+                            <i class='bx bxs-certification about__icon'></i>
+                            <h3 class="about__title">Diploma IT</h3>
+                            <span class="about__subtitle">NIBM Kandy</span>
+                            <span class="about__tiny">2018 - 2020</span>
+                        </div>
+                        <div class="about__box">
+                            <i class='bx bxs-school about__icon'></i>
+                            <h3 class="about__title">Advanced Level</h3>
+                            <span class="about__subtitle">St. Thomas' College</span>
+                            <span class="about__tiny">2019</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== AWARDS ===============-->
+        <section class="awards section" id="awards">
+            <span class="section__subtitle">My Achievements</span>
+            <h2 class="section__title">Awards & Recognition</h2>
+
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1.5rem; display: flex; align-items: start; gap: 1rem;">
+                            <i class='bx bx-trophy' style="font-size: 1.5rem; color: var(--first-color);"></i>
+                            <div>
+                                <h3 class="about__title" style="margin-bottom: 0.25rem;">Champion – Inter Faculty
+                                    Volleyball</h3>
+                                <p class="about__description" style="margin-bottom: 0;">2025 - Led the ICT Faculty team
+                                    to victory.</p>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 1.5rem; display: flex; align-items: start; gap: 1rem;">
+                            <i class='bx bx-group' style="font-size: 1.5rem; color: var(--first-color);"></i>
+                            <div>
+                                <h3 class="about__title" style="margin-bottom: 0.25rem;">DevRel Lead – FOSS Community
+                                    RUSL</h3>
+                                <p class="about__description" style="margin-bottom: 0;">2024 - Organized tech talks and
+                                    mentored juniors.</p>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 1.5rem; display: flex; align-items: start; gap: 1rem;">
+                            <i class='bx bx-medal' style="font-size: 1.5rem; color: var(--first-color);"></i>
+                            <div>
+                                <h3 class="about__title" style="margin-bottom: 0.25rem;">Chess Tournament – 2nd
+                                    Runners-Up</h3>
+                                <p class="about__description" style="margin-bottom: 0;">2023 - Secured team bronze at
+                                    university finals.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== SKILLS ===============-->
+        <section class="skills section" id="skills">
+            <span class="section__subtitle">My Abilities</span>
+            <h2 class="section__title">My Experience</h2>
+
+            <div class="skills__container container grid">
+                <div class="skills__content">
+                    <h3 class="skills__title">Frontend Development</h3>
+
+                    <div class="skills__box">
+                        <div class="skills__group">
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">HTML5/CSS3</h3>
+                                    <span class="skills__level">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">Tailwind CSS</h3>
+                                    <span class="skills__level">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">Bootstrap</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Right Column - Content -->
-                        <div class="w-full lg:w-1/2 space-y-8">
-                            <!-- Introduction -->
-                            <div class="prose lg:prose-xl dark:prose-invert">
-                                <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                                    I'm Isuru — a final-year B.Tech undergraduate from Rajarata University, passionate
-                                    about building impactful software and embedded systems. I specialize in full-stack
-                                    development, IoT, and blockchain-based solutions.
-                                </p>
-                            </div>
-
-                            <!-- Current Roles -->
-                            <div class="space-y-4">
-                                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">🚀 Current Roles</h3>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start space-x-3">
-                                        <span
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                                            <i class="fas fa-graduation-cap text-blue-600 dark:text-blue-400"></i>
-                                        </span>
-                                        <span class="text-gray-700 dark:text-gray-300">Final-year ICT undergraduate at
-                                            Rajarata University</span>
-                                    </li>
-                                    <li class="flex items-start space-x-3">
-                                        <span
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
-                                            <i class="fas fa-users text-green-600 dark:text-green-400"></i>
-                                        </span>
-                                        <span class="text-gray-700 dark:text-gray-300">Club DevRel of the FOSS
-                                            Community</span>
-                                    </li>
-                                    <li class="flex items-start space-x-3">
-                                        <span
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
-                                            <i class="fas fa-code text-purple-600 dark:text-purple-400"></i>
-                                        </span>
-                                        <span class="text-gray-700 dark:text-gray-300">Developer of AI-powered CCTV,
-                                            Cinnamon Traceability, and Blockchain Health Records</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Tech Philosophy -->
-                            <div
-                                class="bg-white/50 dark:bg-gray-800/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-                                <h3 class="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">🧠 Tech Philosophy
-                                </h3>
-                                <p class="text-gray-700 dark:text-gray-300">
-                                    "I believe tech should be open, ethical, and human-centered. That's why I build with
-                                    open-source, contribute to community projects, and mentor upcoming developers."
-                                </p>
-                            </div>
-
-                            <!-- Fun Facts Grid -->
-                            <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
-                                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg backdrop-blur-sm">
-                                    <span class="block text-2xl mb-2">🏐</span>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Volleyball player & Chess
-                                        enthusiast</p>
+                        <div class="skills__group">
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">JavaScript</h3>
+                                    <span class="skills__level">Intermediate</span>
                                 </div>
-                                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg backdrop-blur-sm">
-                                    <span class="block text-2xl mb-2">🌍</span>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Based in Matale, Sri Lanka</p>
+                            </div>
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">React</h3>
+                                    <span class="skills__level">Intermediate</span>
                                 </div>
-                                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg backdrop-blur-sm">
-                                    <span class="block text-2xl mb-2">🐧</span>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Loves Web, FOSS, and clean code
+                            </div>
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">Next.js</h3>
+                                    <span class="skills__level">Basics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills__content">
+                    <h3 class="skills__title">Backend & Database</h3>
+
+                    <div class="skills__box">
+                        <div class="skills__group">
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">PHP/Laravel</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">Node.js</h3>
+                                    <span class="skills__level">Basics</span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">MySQL/SQL</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skills__group">
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">Git & GitHub</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">REST APIs</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <i class='bx bxs-badge-check'></i>
+                                <div>
+                                    <h3 class="skills__name">Postman</h3>
+                                    <span class="skills__level">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!--=============== SERVICES ===============-->
+        <section class="services section">
+            <span class="section__subtitle">My Services</span>
+            <h2 class="section__title">What I Offer</h2>
+
+            <div class="services__container container grid">
+                <div class="services__card">
+                    <div class="serv">
+                        <h3 class="services__title">Web Application <br> Development</h3>
+
+                        <span class="services__button">
+                            See More <i class='bx bx-right-arrow services__icon'></i>
+                        </span>
+                    </div>
+
+
+                    <div class="services__modal">
+                        <div class="services__modal-content">
+                            <i class='bx bx-x services__modal-close'></i>
+
+                            <h3 class="services__modal-title">Web Application Development</h3>
+
+                            <p class="services__modal-description">
+                                I build scalable, high-performance web applications tailored to your business needs,
+                                ensuring a seamless user experience.
+                            </p>
+
+                            <ul class="services__modal-list">
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        Custom Web Application Development
                                     </p>
-                                </div>
-                                <div class="p-4 bg-white/30 dark:bg-gray-800/30 rounded-lg backdrop-blur-sm">
-                                    <span class="block text-2xl mb-2">☕</span>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Survives on caffeine and
-                                        curiosity</p>
-                                </div>
-                            </div>
+                                </li>
 
-                            <!-- CTA Button -->
-                            <div class="pt-4">
-                                <a href="#contact"
-                                    class="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                                    <span class="mr-2">Let's Connect</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        Responsive User Interfaces
+                                    </p>
+                                </li>
+
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        API Integration & Development
+                                    </p>
+                                </li>
+
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        Performance Optimization
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="services__card">
+                    <h3 class="services__title">UI/UX <br> Implementation</h3>
+
+                    <span class="services__button">
+                        See More <i class='bx bx-right-arrow services__icon'></i>
+                    </span>
+
+                    <div class="services__modal">
+                        <div class="services__modal-content">
+                            <i class='bx bx-x services__modal-close'></i>
+
+                            <h3 class="services__modal-title">UI/UX Implementation</h3>
+
+                            <p class="services__modal-description">
+                                I transform complex requirements into intuitive and visually appealing user interfaces
+                                that drive user engagement.
+                            </p>
+
+                            <ul class="services__modal-list">
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        User Interface Development
+                                    </p>
+                                </li>
+
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        Interactive Prototypes
+                                    </p>
+                                </li>
+
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        Responsive Design Implementation
+                                    </p>
+                                </li>
+
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        Accessibility Compliance
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="services__card">
+                    <h3 class="services__title">Backend <br> Development</h3>
+
+                    <span class="services__button">
+                        See More <i class='bx bx-right-arrow services__icon'></i>
+                    </span>
+
+                    <div class="services__modal">
+                        <div class="services__modal-content">
+                            <i class='bx bx-x services__modal-close'></i>
+
+                            <h3 class="services__modal-title">Backend Development</h3>
+
+                            <p class="services__modal-description">
+                                I engineer robust server-side solutions ensuring security, speed, and reliability for
+                                your applications.
+                            </p>
+
+                            <ul class="services__modal-list">
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        RESTful API Development
+                                    </p>
+                                </li>
+
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        Database Architecture & Optimization
+                                    </p>
+                                </li>
+
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        Authentication & Security
+                                    </p>
+                                </li>
+
+                                <li class="services__modal-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <p class="services__modal-info">
+                                        Server Management & Deployment
+                                    </p>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education Section -->
-        <section id="education"
-            class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-20"
-            aria-label="Education">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12 text-blue-500 dark:text-blue-400">
-                    Education Journey
-                </h2>
-                <div class="max-w-5xl mx-auto grid grid-cols-1 gap-8">
-                    <!-- Bachelor's Degree Card -->
-                    <div
-                        class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
-                        <div class="flex flex-col md:flex-row md:items-start gap-6">
-                            <div class="flex-shrink-0">
-                                <div
-                                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                                    <span class="text-3xl">🎓</span>
-                                </div>
-                            </div>
-                            <div class="flex-grow">
-                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Bachelor of Technology
-                                </h3>
-                                <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">Rajarata University of Sri
-                                    Lanka</h4>
-                                <p class="text-gray-600 dark:text-gray-300 mb-2">2020 – 2024</p>
-                                <p class="text-gray-700 dark:text-gray-200 mb-4">ICT | Software Engineering | Web |
-                                    Blockchain | IoT 🧠💻</p>
-                                <div class="space-y-2">
-                                    <p class="text-gray-600 dark:text-gray-300">• Final-year undergraduate specializing
-                                        in software project development</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Club DevRel of the FOSS Community –
-                                        leading DevRel and mentoring peers</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Full-stack + IoT + Blockchain
-                                        development experience</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!--=============== WORK ===============-->
+        <section class="work section" id="work">
+            <span class="section__subtitle">My Portfolio</span>
+            <h2 class="section__title">Recent Works</h2>
 
-                    <!-- Diploma Card -->
-                    <div
-                        class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
-                        <div class="flex flex-col md:flex-row md:items-start gap-6">
-                            <div class="flex-shrink-0">
-                                <div
-                                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                                    <span class="text-3xl">📜</span>
-                                </div>
-                            </div>
-                            <div class="flex-grow">
-                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Diploma in Information
-                                    Technology</h3>
-                                <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">NIBM Kandy</h4>
-                                <p class="text-gray-600 dark:text-gray-300 mb-2">2018 – 2020</p>
-                                <p class="text-gray-700 dark:text-gray-200 mb-4">Software Engineering & Programming
-                                    Fundamentals 👨‍💻📘</p>
-                                <div class="space-y-2">
-                                    <p class="text-gray-600 dark:text-gray-300">• GPA 3.65/4.0</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Mastered core programming (C, Python,
-                                        Java)</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Built first real-world projects</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Developed interest in open source and
-                                        IoT</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="work__filters">
+                <span class="work__item active-work" data-filter='all'>All</span>
+                <span class="work__item" data-filter='.web'>Web</span>
+                <span class="work__item" data-filter='.mobile'>Mobile</span>
+                <span class="work__item" data-filter='.desktop'>Desktop</span>
+                <span class="work__item" data-filter='.ai'>AI</span>
+                <span class="work__item" data-filter='.blockchain'>Blockchain</span>
+                <span class="work__item" data-filter='.iot'>IoT</span>
+            </div>
 
-                    <!-- A/L Education Card -->
-                    <div
-                        class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
-                        <div class="flex flex-col md:flex-row md:items-start gap-6">
-                            <div class="flex-shrink-0">
-                                <div
-                                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                                    <span class="text-3xl">📚</span>
-                                </div>
-                            </div>
-                            <div class="flex-grow">
-                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">GCE Advanced Level
-                                </h3>
-                                <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">St. Thomas' College, Matale
-                                </h4>
-                                <p class="text-gray-600 dark:text-gray-300 mb-2">2019</p>
-                                <p class="text-gray-700 dark:text-gray-200 mb-4">Technology Stream 🖥️⚙️</p>
-                                <div class="space-y-2">
-                                    <p class="text-gray-600 dark:text-gray-300">• Results: B1 | C2</p>
-                                    <p class="text-gray-600 dark:text-gray-300">• Strengthened analytical and technical
-                                        focus in ICT</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="work__container container grid">
+                <!-- Projects will be loaded dynamically via main.js -->
+            </div>
 
-                    <!-- O/L Education Card -->
-                    <div
-                        class="bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 education-card">
-                        <div class="flex flex-col md:flex-row md:items-start gap-6">
-                            <div class="flex-shrink-0">
-                                <div
-                                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                                    <span class="text-3xl">📚</span>
-                                </div>
-                            </div>
-                            <div class="flex-grow">
-                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">GCE Ordinary Level
-                                    </h4>
-                                    <h4 class="text-lg text-blue-600 dark:text-blue-400 mb-2">St. Thomas' College,
-                                        Matale</h4>
-                                    <p class="text-gray-600 dark:text-gray-300 mb-2">2016</p>
-                                    <div class="space-y-2">
-                                        <p class="text-gray-600 dark:text-gray-300">• Results: A5 | B2 | C2</p>
-                                        <p class="text-gray-600 dark:text-gray-300">• First exposure to computing and
-                                            structured problem solving</p>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="load-more-container" style="text-align: center; margin-top: 2rem;">
+                <button class="button" id="load-more-btn">Load More</button>
+            </div>
             </div>
         </section>
 
-        <!-- Awards & Recognition Timeline -->
-        <section id="awards" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900"
-            aria-label="Awards and Recognition Timeline">
-            <div class="container mx-auto px-6">
-                <h2
-                    class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white transform transition-all duration-300">
-                    <span aria-hidden="true"
-                        class="inline-block mb-2 transform hover:scale-110 transition-transform">🏆</span>
-                    <br class="md:hidden">
-                    Awards & Recognition
-                </h2>
-                <div class="max-w-4xl mx-auto">
-                    <div class="space-y-8 relative awards-timeline" aria-label="Timeline of achievements">
-                        <!-- Timeline entries will be dynamically populated by JavaScript -->
+
+
+        <!--=============== CONTACT ===============-->
+        <section class="contact section" id="contact">
+            <sapn class="section__subtitle">Get in touch</sapn>
+            <h3 class="section__title">Contact Me</h3>
+
+            <div class="contact__container container grid">
+                <div class="contact__content">
+                    <h3 class="contact__title contact__title-info">Talk to me</h3>
+
+                    <div class="contact__info">
+                        <div class="contact__card">
+                            <i class='bx bx-mail-send contact__card-icon'></i>
+                            <h3 class="contact__card-title">Email</h3>
+                            <span class="contact__card-data">isuru.rodrigo1243@gmail.com</span>
+
+                            <a href="mailto:isuru.rodrigo1243@gmail.com" target="_blank" class="contact__button">
+                                Write Me <i class='bx bx-right-arrow contact__button-icon'></i>
+                            </a>
+                        </div>
+
+                        <div class="contact__card">
+                            <i class='bx bxl-whatsapp contact__card-icon'></i>
+                            <h3 class="contact__card-title">Mobile</h3>
+                            <span class="contact__card-data">+94 71 827 5557</span>
+
+                            <a href="tel:+94718275557" target="_blank" class="contact__button">
+                                Call Me <i class='bx bx-right-arrow contact__button-icon'></i>
+                            </a>
+                        </div>
+
+                        <div class="contact__card">
+                            <i class='bx bx-current-location contact__card-icon'></i>
+                            <h3 class="contact__card-title">Location</h3>
+                            <span class="contact__card-data">Matale, Sri Lanka</span>
+
+                            <a href="https://www.google.com/maps" target="_blank" class="contact__button">
+                                Visit <i class='bx bx-right-arrow contact__button-icon'></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Skills & Projects Section -->
-        <section id="skills-and-projects"
-            class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900"
-            aria-label="Skills and Projects">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">Skills & Projects</h2>
+                <div class="contact__content">
+                    <h3 class="contact__title contact__title-form">Write Me your Message</h3>
 
-                <!-- Skills Grid -->
-                <div class="mb-12">
-                    <h3 class="text-xl font-semibold mb-6 text-center">Technical Skills</h3>
-                    <div id="skills-grid" class="flex flex-wrap justify-center gap-3 mb-8">
-                        <button
-                            class="skill-filter-btn active px-4 py-2 rounded-full bg-white border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all"
-                            data-skill="all">
-                            Show All
+                    <form action="https://formspree.io/f/xzdbagky" method="POST" class="contact__form"
+                        id="contact-form">
+                        <div class="contact__form-div">
+                            <label for="contact-name" class="contact__form-tag">Name</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Enter name"
+                                class="contact__form-input" required>
+                        </div>
+
+                        <div class="contact__form-div">
+                            <label for="contact-email" class="contact__form-tag">Mail</label>
+                            <input type="email" id="contact-email" name="email" placeholder="Enter email"
+                                class="contact__form-input" required>
+                        </div>
+
+                        <div class="contact__form-div contact__form-area">
+                            <label for="contact-message" class="contact__form-tag">Message</label>
+                            <textarea id="contact-message" name="message" cols="30" rows="10"
+                                placeholder="Write your Message" class="contact__form-input" required></textarea>
+                        </div>
+
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+                        <input type="hidden" name="_next" value="https://your-portfolio-url.com/#contact">
+
+                        <button class="button" type="submit">
+                            Send Message
                         </button>
-                    </div>
+                    </form>
+
                 </div>
 
-                <!-- Selected Skills Tags -->
-                <div id="selected-skills" class="flex flex-wrap justify-center gap-2 mb-8">
-                    <h3 class="text-xl font-semibold mb-6 text-center mt-8">Projects</h3>
-                    <!-- Selected skills will appear here -->
-                </div>
-
-                <!-- Projects Grid -->
-                <div id="filtered-projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project cards will be populated by JavaScript -->
-                </div>
-
-                <!-- No Projects Message -->
-                <div id="no-projects-message" class="hidden text-center py-12 text-gray-500">
-                    No projects found for the selected skills.
-                </div>
-            </div>
         </section>
 
-        <!-- Case Study Modal -->
-        <div id="case-study-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
-            <div class="min-h-screen flex items-center justify-center p-4">
-                <div
-                    class="relative bg-white dark:bg-gray-800 max-w-4xl w-full rounded-xl shadow-2xl transform transition-all">
-                    <button id="close-modal"
-                        class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-                        aria-label="Close case study" title="Close case study">
-                        <i class="fas fa-times text-xl" aria-hidden="true"></i>
-                    </button>
-                    <div class="p-8">
-                        <div id="case-study-content" class="space-y-8">
-                            <h2 class="text-3xl font-bold text-gray-900 dark:text-white"></h2>
-
-                            <!-- Problem Statement -->
-                            <div>
-                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Problem
-                                    Statement</h3>
-                                <p class="text-gray-600 dark:text-gray-400"></p>
-                            </div>
-
-                            <!-- Role -->
-                            <div>
-                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">My Role</h3>
-                                <p class="text-gray-600 dark:text-gray-400"></p>
-                            </div>
-
-                            <!-- Challenges & Solutions -->
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div class="challenges">
-                                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Key
-                                        Challenges</h3>
-                                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2"></ul>
-                                </div>
-                                <div class="solutions">
-                                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Solutions
-                                    </h3>
-                                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2"></ul>
-                                </div>
-                            </div>
-
-                            <!-- Key Learnings -->
-                            <div>
-                                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Key Learnings
-                                </h3>
-                                <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2"></ul>
-                            </div>
-
-                            <!-- Project Images -->
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="case-study-images"></div>
-                        </div>
-                    </div>
+        <!--=============== PORTFOLIO MODAL (Dynamic) ===============-->
+        <div class="portfolio-modal" id="portfolio-modal">
+            <div class="portfolio-modal__content">
+                <i class='bx bx-x portfolio-modal__close' id="portfolio-modal-close"></i>
+                <div class="portfolio-modal__body" id="portfolio-modal-body">
+                    <!-- Content injected via JS -->
                 </div>
             </div>
         </div>
-
-        <!-- Contact Section -->
-        <section id="contact"
-            class="min-h-screen py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900"
-            aria-label="Contact Information">
-            <div class="container mx-auto px-6">
-                <h2
-                    class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white contact-title">
-                    Get in Touch
-                </h2>
-
-                <!-- Availability Badge -->
-                <div class="flex justify-center mb-8">
-                    <span id="availability-badge" class="px-4 py-2 rounded-full text-sm font-medium"></span>
-                </div>
-
-                <!-- Job Cards -->
-                <div id="job-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
-                    <!-- Cards will be dynamically inserted by JavaScript -->
-                </div>
-
-                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Contact Information -->
-                    <div class="space-y-8">
-                        <div class="contact-info space-y-6">
-                            <!-- Location -->
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                                    <i class="fas fa-map-marker-alt text-blue-600 dark:text-blue-400"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Location</h3>
-                                    <p class="text-gray-600 dark:text-gray-300">Matale, Sri Lanka</p>
-                                </div>
-                            </div>
-
-                            <!-- Email -->
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                                    <i class="fas fa-envelope text-blue-600 dark:text-blue-400"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Email</h3>
-                                    <a href="mailto:isuru.rodrigo1243@gmail.com"
-                                        class="text-blue-600 dark:text-blue-400 hover:underline">isuru.rodrigo1243@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <!-- Phone -->
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                                    <i class="fas fa-phone text-blue-600 dark:text-blue-400"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Phone</h3>
-                                    <a href="tel:+94714288427"
-                                        class="text-blue-600 dark:text-blue-400 hover:underline">+94 71 428 8427</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Social Links -->
-                        <div class="social-links flex space-x-4">
-                            <a href="https://github.com/Madusanka-max" target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 rounded-full bg-gray-800 dark:bg-gray-700 flex items-center justify-center text-white hover:bg-blue-600 dark:hover:bg-blue-600 transition-colors duration-300">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/Isuru-Madusanka-Rodrigo" target="_blank"
-                                rel="noopener noreferrer"
-                                class="w-10 h-10 rounded-full bg-gray-800 dark:bg-gray-700 flex items-center justify-center text-white hover:bg-blue-600 dark:hover:bg-blue-600 transition-colors duration-300">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-
-                        <!-- Working Hours -->
-                        <div class="bg-white/50 dark:bg-gray-800/50 rounded-lg p-6 backdrop-blur-sm">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Working Hours</h3>
-                            <div class="space-y-2 text-gray-600 dark:text-gray-300">
-                                <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-                                <p>Saturday: 10:00 AM - 4:00 PM</p>
-                                <p>Sunday: Available for urgent matters</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Contact Form -->
-                    <form id="contactForm"
-                        class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition-all duration-300">
-                        <div class="mb-6">
-                            <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                            <input type="text" id="name" name="name"
-                                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                                required>
-                            <div id="nameError" class="text-red-500 text-sm mt-1 hidden">Please enter your name</div>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                            <input type="email" id="email" name="email"
-                                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                                required>
-                            <div id="emailError" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email
-                                address</div>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4"
-                                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                                required></textarea>
-                            <div id="messageError" class="text-red-500 text-sm mt-1 hidden">Please enter your message
-                            </div>
-                        </div>
-
-                        <button type="submit" id="submitButton"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-
-                        <div id="submitStatus" class="mt-4 text-center"></div>
-                    </form>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8" role="contentinfo">
-        <div class="container mx-auto px-6 text-center">
-            <p><a href="https://github.com/Madusanka-max">© 2025 Madusanka-MAX</a> | Built with <span
-                    class="text-red-500" aria-hidden="true">🤖</span> using HTML | Tailwind CSS | JavaScript</p>
+    <!--=============== FOOTER ===============-->
+    <footer class="footer">
+        <div class="footer__container container">
+            <h1 class="footer__title">Isuru</h1>
+
+            <ul class="footer__list">
+
+                <li class="footer__item">
+                    <a href="#" class="footer__link">Home</a>
+                </li>
+                <li class="footer__item">
+                    <a href="#about" class="footer__link">About</a>
+                </li>
+                <li class="footer__item">
+                    <a href="#experience" class="footer__link">Experience</a>
+                </li>
+                <li class="footer__item">
+                    <a href="#education" class="footer__link">Education</a>
+                </li>
+                <li class="footer__item">
+                    <a href="#awards" class="footer__link">Awards</a>
+                </li>
+                <li class="footer__item">
+                    <a href="#skills" class="footer__link">Skills</a>
+                </li>
+                <li class="footer__item">
+                    <a href="#work" class="footer__link">Projects</a>
+                </li>
+                <li class="footer__item">
+                    <a href="#contact" class="footer__link">Contact</a>
+                </li>
+                <li class="footer__item">
+                    <a href="assets/pdf/Isuru Madusanka Rodrigo.pdf" download class="footer__link">Download CV (PDF)</a>
+                </li>
+            </ul>
+
+            <span class="footer__copy">
+                &#169; 2025 Isuru Madusanka. All rights reserved.
+            </span>
         </div>
-    </footer> <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
-    <script src="js/main.js" defer></script>
-    <script src="js/projects.js" defer></script>
+    </footer>
+
+    <!--=============== SCROLLREVEAL ===============-->
+
+    <!-- <script src="assets/js/scrollreveal.min.js"></script> -->
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!--=============== MIXITUP FILTER ===============-->
+    <script src="assets/js/mixitup.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
