@@ -374,6 +374,70 @@ function initializeAnimations() {
         ease: 'power1.inOut'
     });
 
+    // Initialize Hero Parallax
+    const heroSection = document.getElementById('hero');
+    const profileContainer = document.getElementById('profile-container');
+    const heroTextContent = document.querySelector('.hero-text'); // Targeting the main h1
+
+    if (heroSection && profileContainer && heroTextContent) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const x = (e.clientX - window.innerWidth / 2) * 0.02;
+            const y = (e.clientY - window.innerHeight / 2) * 0.02;
+
+            gsap.to(profileContainer, {
+                x: x,
+                y: y + 15, // Maintain the floating offset
+                duration: 1,
+                ease: 'power2.out'
+            });
+
+            gsap.to(heroTextContent, {
+                x: -x,
+                y: -y,
+                duration: 1,
+                ease: 'power2.out'
+            });
+        });
+        
+        // Reset on mouse leave
+        heroSection.addEventListener('mouseleave', () => {
+             gsap.to([profileContainer, heroTextContent], {
+                x: 0,
+                y: 0, // Profile container has yoyo y:15, this might conflict. Let's just reset x.
+                // Actually, for profile container, let's just let the float take over by not forcing Y too hard or resetting to the float baseline.
+                // Simpler: Just reset X.
+                x: 0,
+                duration: 1,
+                ease: 'power2.out'
+            });
+        });
+    }
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+        const progressBar = document.getElementById('scroll-progress');
+        if (progressBar) {
+            progressBar.style.width = scrollPercent + '%';
+        }
+    });
+
+    // Footer Reveal Animation
+    gsap.from('footer', {
+        scrollTrigger: {
+            trigger: 'footer',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out'
+    });
+
+
     // About section enhanced animations
     const aboutTimeline = gsap.timeline({
         scrollTrigger: {

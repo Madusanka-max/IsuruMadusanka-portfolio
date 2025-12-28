@@ -10,21 +10,24 @@
     --dark-bg: #0a0a0a;
     --grid-size: 30px;
 }
+
 /* Smooth scrolling behavior for the entire page */
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     transition: background-color 0.3s ease-in-out;
     background: var(--dark-bg);
-    background-image: 
+    background-image:
         linear-gradient(rgb(0, 242, 255) 1px, transparent 1px),
         linear-gradient(90deg, rgb(55, 0, 255) 1px, transparent 1px);
     background-size: var(--grid-size) var(--grid-size);
 }
+
 body {
     overflow-x: hidden;
     transition: all 0.3s ease-in-out;
 }
+
 /* Hero section profile image with futuristic glow */
 #profile-container {
     width: 32rem !important;
@@ -35,6 +38,7 @@ body {
     position: relative;
     filter: drop-shadow(0 0 10px var(--neon-blue));
 }
+
 #profile-container::before {
     content: '';
     position: absolute;
@@ -44,6 +48,7 @@ body {
     opacity: 0.5;
     animation: glowPulse 2s infinite;
 }
+
 #profile-container img {
     width: 100% !important;
     height: 100% !important;
@@ -51,9 +56,19 @@ body {
     position: relative;
     z-index: 1;
 }
+
 @keyframes glowPulse {
-    0%, 100% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.02); }
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
 }
 
 html {
@@ -90,7 +105,9 @@ body {
 }
 
 /* Global theme transition */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
@@ -159,7 +176,7 @@ body {
 }
 
 /* Timeline connector line */
-.timeline-item:not(:last-child) .w-0.5 {
+.timeline-item:not(:last-child) .w-0\.5 {
     height: 100%;
     position: absolute;
     top: 24px;
@@ -167,7 +184,7 @@ body {
     opacity: 0.2;
 }
 
-.dark .timeline-item:not(:last-child) .w-0.5 {
+.dark .timeline-item:not(:last-child) .w-0\.5 {
     --timeline-color: #3b82f6;
     opacity: 0.1;
 }
@@ -184,7 +201,8 @@ body {
 }
 
 /* Form input focus effects */
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     transform: translateY(-2px);
     transition: all 0.3s ease;
     border-color: theme('colors.primary');
@@ -192,21 +210,31 @@ input:focus, textarea:focus {
 }
 
 /* Contact form animations */
-#contactForm input:focus, 
+#contactForm input:focus,
 #contactForm textarea:focus {
     transform-origin: center;
     will-change: transform;
 }
 
-#contactForm input.typing, 
+#contactForm input.typing,
 #contactForm textarea.typing {
     animation: gentle-shake 0.15s ease-in-out;
 }
 
 @keyframes gentle-shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-1px); }
-    75% { transform: translateX(1px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-1px);
+    }
+
+    75% {
+        transform: translateX(1px);
+    }
 }
 
 /* Contact info icon animations */
@@ -220,11 +248,25 @@ input:focus, textarea:focus {
 
 /* Submit button paper plane animation */
 @keyframes fly {
-    0% { transform: translateX(0) rotate(0); }
-    20% { transform: translateX(4px) rotate(10deg); }
-    40% { transform: translateX(-2px) rotate(-5deg); }
-    60% { transform: translateX(4px) rotate(10deg); }
-    100% { transform: translateX(0) rotate(0); }
+    0% {
+        transform: translateX(0) rotate(0);
+    }
+
+    20% {
+        transform: translateX(4px) rotate(10deg);
+    }
+
+    40% {
+        transform: translateX(-2px) rotate(-5deg);
+    }
+
+    60% {
+        transform: translateX(4px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateX(0) rotate(0);
+    }
 }
 
 #contactForm button[type="submit"]:hover i {
@@ -252,6 +294,7 @@ input:focus, textarea:focus {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -263,6 +306,7 @@ input:focus, textarea:focus {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -347,8 +391,15 @@ input:focus, textarea:focus {
 
 /* Availability badge glow effect */
 @keyframes glow {
-    0%, 100% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.2); }
-    50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(34, 197, 94, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    }
 }
 
 #availability-badge.animate-pulse {
@@ -396,14 +447,14 @@ input:focus, textarea:focus {
     opacity: 1 !important;
 }
 
-.award-item > div:last-child {
+.award-item>div:last-child {
     opacity: 1 !important;
     transform: none !important;
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.dark .award-item > div:last-child {
+.dark .award-item>div:last-child {
     background: var(--tw-gray-800);
     border-color: rgba(255, 255, 255, 0.1);
 }
@@ -417,10 +468,12 @@ input:focus, textarea:focus {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
     }
+
     70% {
         transform: scale(1);
         box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
     }
+
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
@@ -500,8 +553,15 @@ input:focus, textarea:focus {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .terminal-prompt {

@@ -282,6 +282,20 @@ function initializeSkillsAndProjects() {
       button.textContent = skill;
       skillsGrid.appendChild(button);
     });
+
+    // Staggered animation for skills
+    gsap.from(".skill-filter-btn", {
+        scrollTrigger: {
+            trigger: "#skills-grid",
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+        },
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.05,
+        ease: "back.out(1.7)"
+    });
   }
 
   // Create project cards
